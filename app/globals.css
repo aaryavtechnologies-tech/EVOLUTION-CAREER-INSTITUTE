@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-navy: #071D43;
+  --color-brand-navy-dark: #04122C;
+  --color-brand-navy-light: #0D2D68;
+  --color-brand-royal: #123C78;
+  --color-brand-royal-light: #1D56A5;
+  --color-brand-red: #D71920;
+  --color-brand-red-dark: #B51218;
+  --color-brand-gold: #FFC928;
+  --color-brand-gold-light: #FFD858;
+  --color-brand-gold-dark: #E0AD15;
+  --color-brand-maroon: #580B15;
+  --color-brand-orange: #EA580C;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  background-color: #FAFAFC;
+  color: #1E293B;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #071D43;
+}
+::-webkit-scrollbar-thumb {
+  background: #FFC928;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E0AD15;
+}
+
+/* Subtle glow animations */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.05); }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float-slow 3.5s ease-in-out infinite;
+}
+
+@keyframes diya-glow {
+  0%, 100% { filter: drop-shadow(0 0 12px rgba(255, 201, 40, 0.8)) drop-shadow(0 0 24px rgba(234, 88, 12, 0.6)); }
+  50% { filter: drop-shadow(0 0 20px rgba(255, 201, 40, 1)) drop-shadow(0 0 36px rgba(234, 88, 12, 0.9)); }
+}
+
+.diya-flame {
+  animation: diya-glow 2s ease-in-out infinite alternate;
+}
