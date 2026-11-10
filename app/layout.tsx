@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://evolutioncareerinstitute.com"),
   title: "Evolution Career Institute | NEET, IIT-JEE, CUET & NDA Coaching",
   description:
     "Join Evolution Career Institute, Lucknow, for academic guidance and competitive exam preparation for NEET, IIT-JEE, CUET, NDA, and Classes 9th to 12th. An initiative of IIT JEE qualified mentors.",
@@ -38,6 +39,21 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     siteName: "Evolution Career Institute",
+    images: [
+      {
+        url: "/og-image.svg",
+        width: 1200,
+        height: 630,
+        alt: "Evolution Career Institute Lucknow - NEET, IIT-JEE, CUET & NDA Coaching",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Evolution Career Institute | NEET, IIT-JEE, CUET & NDA Coaching",
+    description:
+      "An initiative of IIT JEE qualified mentors in Lucknow. Comprehensive preparation for NEET, IIT-JEE, CUET, NDA, Sainik School, and Board Examinations for Classes 9th to 12th.",
+    images: ["/og-image.svg"],
   },
   robots: {
     index: true,
