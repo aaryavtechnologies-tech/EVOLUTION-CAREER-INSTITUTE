@@ -238,3 +238,4 @@ export default function Courses({ onSelectCourse }: CoursesProps) {
     </section>
   );
 }
+

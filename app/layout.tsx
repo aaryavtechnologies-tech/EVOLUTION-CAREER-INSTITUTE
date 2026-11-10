@@ -18,6 +18,11 @@ export const metadata: Metadata = {
     "Sadar Cantt Coaching",
     "Coaching in Sadar Cantt Lucknow",
   ],
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
   authors: [{ name: "Evolution Career Institute" }],
   creator: "Evolution Career Institute",
   publisher: "Evolution Career Institute",
@@ -46,6 +51,27 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  name: "Evolution Career Institute",
+  description:
+    "An initiative of IIT JEE qualified mentors offering preparation for NEET, IIT-JEE, CUET, NDA, Sainik School, RMS, RIMS, and School Board Examinations for Classes 9th to 12th.",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Neelkanth Complex, Near Sainik Bhojnalaya, Sadar Cantt",
+    addressLocality: "Lucknow",
+    addressRegion: "Uttar Pradesh",
+    postalCode: "226002",
+    addressCountry: "IN",
+  },
+  telephone: ["+916390247880", "+917390092459"],
+  offers: {
+    "@type": "Offer",
+    description: "50% Discount Early Bird Diwali Special Offer on competitive batches",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -59,6 +85,10 @@ export default function RootLayout({
         <link
           href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap"
           rel="stylesheet"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body className="antialiased selection:bg-[#FFC928] selection:text-[#071D43] bg-slate-50 text-slate-800">

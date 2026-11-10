@@ -625,3 +625,4 @@ export default function AdmissionEnquiry({
     </section>
   );
 }
+

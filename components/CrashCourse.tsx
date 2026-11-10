@@ -206,3 +206,4 @@ export default function CrashCourse({ onEnquireCrashCourse }: CrashCourseProps) 
     </section>
   );
 }
+
