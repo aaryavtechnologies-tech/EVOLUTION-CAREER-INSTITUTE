@@ -216,7 +216,7 @@ export default function AdmissionEnquiry({
                 },
                 {
                   title: "Fast-Track Crash Course Available",
-                  desc: "Intensive 2026 examination crash course starting 15th November 2026.",
+                  desc: "Intensive 2026 examination crash course starting 20th November 2026.",
                 },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3 p-3.5 rounded-xl bg-white border border-slate-200/80 shadow-sm">

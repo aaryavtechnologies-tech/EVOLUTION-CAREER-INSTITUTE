@@ -21,6 +21,7 @@ export default function Navbar() {
     { name: "About Us", href: "#about" },
     { name: "Courses", href: "#courses" },
     { name: "Why Choose Us", href: "#why-choose-us" },
+    { name: "Campus Life", href: "#campus-life" },
     { name: "Crash Course", href: "#crash-course" },
     {
       name: "Special Offer",
@@ -89,12 +90,12 @@ export default function Navbar() {
             </a>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+            <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1.5">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="relative px-3 py-2 text-sm font-semibold text-[#071D43] hover:text-[#D71920] rounded-md transition-colors flex items-center gap-1.5"
+                  className="relative px-2.5 xl:px-3 py-2 text-xs xl:text-sm font-semibold text-[#071D43] hover:text-[#D71920] rounded-md transition-colors flex items-center gap-1.5 whitespace-nowrap"
                 >
                   {link.name}
                   {link.badge && (

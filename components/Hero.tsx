@@ -134,7 +134,7 @@ export default function Hero() {
                 New
               </span>
               <span>
-                Crash Course 2026 begins <strong>15th November 2026</strong> &bull; Limited Batch
+                Crash Course 2026 begins <strong>20th November 2026</strong> &bull; Limited Batch
                 Size
               </span>
             </div>
@@ -150,9 +150,9 @@ export default function Hero() {
               {/* Main Image Container */}
               <div className="relative rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl bg-[#0B234F]">
                 <img
-                  src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=900&auto=format&fit=crop"
-                  alt="Confident Indian students studying together for competitive exams"
-                  className="w-full h-[400px] sm:h-[480px] object-cover object-top hover:scale-105 transition-transform duration-700"
+                  src="/media/teachers-day/students-batch-group.jpeg"
+                  alt="Evolution Career Institute students attending class in Sadar Cantt, Lucknow"
+                  className="w-full h-[400px] sm:h-[480px] object-cover object-center hover:scale-105 transition-transform duration-700"
                   loading="eager"
                 />
 
@@ -199,7 +199,7 @@ export default function Hero() {
                   <p className="text-[11px] font-bold text-[#D71920] uppercase tracking-wider">
                     Crash Course 2026
                   </p>
-                  <p className="text-xs font-extrabold text-[#071D43]">Starts 15th Nov</p>
+                  <p className="text-xs font-extrabold text-[#071D43]">Starts 20th Nov</p>
                 </div>
               </div>
             </div>

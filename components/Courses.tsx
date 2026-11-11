@@ -30,7 +30,7 @@ export default function Courses({ onSelectCourse }: CoursesProps) {
       cardGradient: "from-blue-50/50 via-white to-white",
       defaultClass: "9th",
       defaultCourse: "Boards",
-      image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=800&auto=format&fit=crop",
+      image: "/media/independence-day/independence-day-students-hall.jpeg",
     },
     {
       id: "prog-2",
@@ -54,7 +54,7 @@ export default function Courses({ onSelectCourse }: CoursesProps) {
       cardGradient: "from-amber-50/50 via-white to-white",
       defaultClass: "11th",
       defaultCourse: "IIT-JEE",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop",
+      image: "/media/teachers-day/faculty-mentors-panel.jpeg",
     },
     {
       id: "prog-3",
@@ -77,7 +77,7 @@ export default function Courses({ onSelectCourse }: CoursesProps) {
       cardGradient: "from-emerald-50/50 via-white to-white",
       defaultClass: "9th",
       defaultCourse: "Sainik School",
-      image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800&auto=format&fit=crop",
+      image: "/media/independence-day/independence-day-students-front.jpeg",
     },
   ];
 
@@ -132,7 +132,7 @@ export default function Courses({ onSelectCourse }: CoursesProps) {
                   <img
                     src={prog.image}
                     alt={prog.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/20 to-transparent"></div>

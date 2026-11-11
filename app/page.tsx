@@ -6,6 +6,7 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Courses from "@/components/Courses";
 import WhyChooseUs from "@/components/WhyChooseUs";
+import CampusLife from "@/components/CampusLife";
 import CrashCourse from "@/components/CrashCourse";
 import DiwaliOffer from "@/components/DiwaliOffer";
 import AdmissionEnquiry from "@/components/AdmissionEnquiry";
@@ -28,9 +29,9 @@ export default function Home() {
     setIsOfferClaimed(true);
   };
 
-  const handleEnquireCrashCourse = () => {
-    setSelectedCourse("Boards");
-    setSelectedClass("12th");
+  const handleEnquireCrashCourse = (courseName = "Boards", className = "12th") => {
+    setSelectedCourse(courseName);
+    setSelectedClass(className);
     setIsOfferClaimed(false);
   };
 
@@ -52,7 +53,10 @@ export default function Home() {
         {/* SECTION 5: Why Choose Us? */}
         <WhyChooseUs />
 
-        {/* SECTION 6: Crash Course Promotion */}
+        {/* SECTION 6: Campus Life, Videos, Celebrations & Awards */}
+        <CampusLife />
+
+        {/* SECTION 7: Crash Course Promotion */}
         <CrashCourse onEnquireCrashCourse={handleEnquireCrashCourse} />
 
         {/* SECTION 7: Diwali Special Offer */}
