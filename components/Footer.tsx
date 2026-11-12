@@ -9,6 +9,7 @@ export default function Footer() {
     { name: "Courses", href: "#courses" },
     { name: "Why Choose Us", href: "#why-choose-us" },
     { name: "Crash Course 2026", href: "#crash-course" },
+    { name: "Test Series 2.0", href: "#test-series" },
     { name: "Admissions", href: "#admissions" },
     { name: "Reviews", href: "#reviews" },
     { name: "Contact", href: "#contact" },

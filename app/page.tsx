@@ -9,6 +9,7 @@ import Toppers from "@/components/Toppers";
 import Memories from "@/components/Memories";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import CrashCourse from "@/components/CrashCourse";
+import TestSeries from "@/components/TestSeries";
 import AdmissionEnquiry from "@/components/AdmissionEnquiry";
 import Reviews from "@/components/Reviews";
 import Contact from "@/components/Contact";
@@ -25,6 +26,11 @@ export default function Home() {
   };
 
   const handleEnquireCrashCourse = () => {
+    setSelectedCourse("Boards");
+    setSelectedClass("12th");
+  };
+
+  const handleEnquireTestSeries = () => {
     setSelectedCourse("Boards");
     setSelectedClass("12th");
   };
@@ -55,6 +61,9 @@ export default function Home() {
 
         {/* SECTION 6: Crash Course Promotion */}
         <CrashCourse onEnquireCrashCourse={handleEnquireCrashCourse} />
+
+        {/* Test Series 2.0 Section */}
+        <TestSeries onEnquireTestSeries={handleEnquireTestSeries} />
 
         {/* SECTION 7: Admission Enquiry */}
         <AdmissionEnquiry
