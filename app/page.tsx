@@ -8,6 +8,7 @@ import Courses from "@/components/Courses";
 import Toppers from "@/components/Toppers";
 import Memories from "@/components/Memories";
 import WhyChooseUs from "@/components/WhyChooseUs";
+import CampusLife from "@/components/CampusLife";
 import CrashCourse from "@/components/CrashCourse";
 import TestSeries from "@/components/TestSeries";
 import AdmissionEnquiry from "@/components/AdmissionEnquiry";
@@ -25,9 +26,9 @@ export default function Home() {
     setSelectedClass(className);
   };
 
-  const handleEnquireCrashCourse = () => {
-    setSelectedCourse("Boards");
-    setSelectedClass("12th");
+  const handleEnquireCrashCourse = (courseName = "Boards", className = "12th") => {
+    setSelectedCourse(courseName);
+    setSelectedClass(className);
   };
 
   const handleEnquireTestSeries = () => {
@@ -59,7 +60,10 @@ export default function Home() {
         {/* SECTION 5: Why Choose Us? */}
         <WhyChooseUs />
 
-        {/* SECTION 6: Crash Course Promotion */}
+        {/* SECTION 6: Campus Life, Videos, Celebrations & Awards */}
+        <CampusLife />
+
+        {/* SECTION 7: Crash Course Promotion */}
         <CrashCourse onEnquireCrashCourse={handleEnquireCrashCourse} />
 
         {/* Test Series 2.0 Section */}

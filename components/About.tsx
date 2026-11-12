@@ -1,9 +1,28 @@
 "use client";
 
-import React from "react";
-import { Users, Lightbulb, Award, HeartHandshake, CheckCircle2, BookOpen } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import {
+  Users,
+  Lightbulb,
+  Award,
+  HeartHandshake,
+  CheckCircle2,
+  BookOpen,
+  Maximize2,
+  X,
+} from "lucide-react";
 
 export default function About() {
+  const [showAwardModal, setShowAwardModal] = useState(false);
+
+  useEffect(() => {
+    if (!showAwardModal) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setShowAwardModal(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [showAwardModal]);
   const highlights = [
     {
       title: "Student-Focused Learning",
@@ -73,6 +92,47 @@ export default function About() {
                     </p>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Faculty Award Spotlight */}
+            <div className="mt-6 lg:mt-12 p-4 rounded-2xl bg-gradient-to-br from-amber-50 via-white to-red-50/40 border border-amber-200/80 shadow-sm flex items-center gap-4">
+              <button
+                type="button"
+                onClick={() => setShowAwardModal(true)}
+                aria-label="View EduCart Teacher Impact Award Certificate"
+                className="relative w-20 h-28 flex-shrink-0 rounded-xl overflow-hidden border-2 border-[#FFC928] shadow-md group cursor-pointer bg-[#580B15]"
+              >
+                <img
+                  src="/media/awards/sharib-shah-teacher-impact-award.jpeg"
+                  alt="EduCart Teacher Impact Award 2026-2027 awarded to Sharib Shah"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                  loading="lazy"
+                />
+                <span className="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <Maximize2 className="w-4 h-4 text-white" />
+                </span>
+              </button>
+
+              <div className="min-w-0 flex-1">
+                <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider text-[#D71920] bg-red-100/80 px-2 py-0.5 rounded-full mb-1">
+                  <Award className="w-3 h-3" />
+                  EduCart Honor 2026–2027
+                </span>
+                <h3 className="text-sm sm:text-base font-black text-[#071D43] leading-snug">
+                  Teacher Impact Award — Sharib Shah
+                </h3>
+                <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                  Honored by a panel of independent board experts for lasting impact on students&apos; lives (Award ID: PBX23-4).
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setShowAwardModal(true)}
+                  className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-[#123C78] hover:text-[#D71920] transition-colors cursor-pointer"
+                >
+                  <Maximize2 className="w-3.5 h-3.5" />
+                  <span>View Award Certificate</span>
+                </button>
               </div>
             </div>
           </div>
@@ -152,6 +212,46 @@ export default function About() {
           </div>
         </div>
       </div>
+
+      {/* Award Certificate Modal */}
+      {showAwardModal && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="EduCart Teacher Impact Award Certificate"
+          onClick={() => setShowAwardModal(false)}
+          className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-sm flex items-center justify-center p-4"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative max-w-lg w-full bg-[#071D43] rounded-2xl border border-[#FFC928]/40 shadow-2xl overflow-hidden"
+          >
+            <div className="flex items-center justify-between px-5 py-3 border-b border-white/10 text-white">
+              <div className="flex items-center gap-2">
+                <Award className="w-4 h-4 text-[#FFC928]" />
+                <span className="text-sm font-bold">
+                  EduCart Teacher Impact Award 2026–2027
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowAwardModal(false)}
+                aria-label="Close certificate preview"
+                className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="p-4 bg-black/40 flex justify-center">
+              <img
+                src="/media/awards/sharib-shah-teacher-impact-award.jpeg"
+                alt="EduCart Teacher Impact Award 2026-2027 awarded to Sharib Shah"
+                className="max-h-[75vh] w-auto object-contain rounded-lg"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

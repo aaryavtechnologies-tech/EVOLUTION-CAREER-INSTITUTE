@@ -20,7 +20,7 @@ export default function Navbar() {
     { name: "Home", href: "#home" },
     { name: "About Us", href: "#about" },
     { name: "Courses", href: "#courses" },
-    { name: "Why Choose Us", href: "#why-choose-us" },
+    { name: "Campus Life", href: "#campus-life" },
     { name: "Reviews", href: "#reviews" },
     { name: "Contact", href: "#contact" },
   ];
@@ -30,8 +30,10 @@ export default function Navbar() {
     { name: "About Us", href: "#about" },
     { name: "Courses", href: "#courses" },
     { name: "Class 10 Toppers", href: "#toppers" },
+    { name: "Campus Life", href: "#campus-life" },
     { name: "Why Choose Us", href: "#why-choose-us" },
     { name: "Crash Course 2026", href: "#crash-course" },
+    { name: "Test Series 2.0", href: "#test-series" },
     { name: "Reviews", href: "#reviews" },
     { name: "Contact", href: "#contact" },
   ];
@@ -70,7 +72,7 @@ export default function Navbar() {
               href="#crash-course"
               className="hidden xl:inline-flex items-center gap-1 text-slate-200 hover:text-[#FFC928] transition-colors font-semibold text-[11px]"
             >
-              Crash Course: 15 Nov
+              Crash Course: 20 Nov
             </a>
             <span className="hidden xl:inline text-white/30">|</span>
             <span className="inline-flex items-center gap-1.5 bg-[#D71920]/90 text-white font-semibold text-[11px] px-2.5 py-0.5 rounded-full uppercase tracking-wider">

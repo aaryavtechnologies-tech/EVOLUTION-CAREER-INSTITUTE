@@ -47,7 +47,7 @@ An initiative of IIT-JEE qualified mentors offering structured preparation for N
    - **Build command**: `npm run build`
    - **Build output directory**: `out`
 4. In **Environment variables**, optionally set:
-   - `NODE_VERSION`: `20` (or `22`)
+   - `NODE_VERSION`: `22`
 5. Click **Save and Deploy**.
 
 ### Option 2: Wrangler CLI
