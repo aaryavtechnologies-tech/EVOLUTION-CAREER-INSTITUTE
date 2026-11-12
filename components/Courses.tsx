@@ -204,34 +204,45 @@ export default function Courses({ onSelectCourse }: CoursesProps) {
           })}
         </div>
 
-        {/* Bottom Banner */}
-        <div className="mt-12 bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-[#071D43] text-[#FFC928] flex items-center justify-center flex-shrink-0 font-bold">
-              <Sparkles className="w-6 h-6" />
-            </div>
-            <div>
-              <h4 className="text-base sm:text-lg font-bold text-[#071D43]">
-                Need guidance choosing the right course for your goals?
-              </h4>
-              <p className="text-xs sm:text-sm text-slate-500">
-                Talk to our academic counsellors today for personalized batch details and syllabus roadmaps.
-              </p>
-            </div>
+        {/* Bottom Banner & Official Uniform Visual */}
+        <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+          <div className="lg:col-span-5 rounded-2xl overflow-hidden border border-slate-200 shadow-md bg-neutral-800">
+            <img
+              src="/images/gallery/tshirt.jpg"
+              alt="Evolution Career Institute official polo uniform for IIT, JEE, NEET, NDA and Boards"
+              className="w-full h-auto block hover:scale-[1.02] transition-transform duration-500"
+              loading="lazy"
+            />
           </div>
-          <div className="flex items-center gap-3 w-full md:w-auto">
-            <a
-              href="tel:6390247880"
-              className="w-full md:w-auto text-center px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-[#071D43] text-white hover:bg-[#123C78] transition-colors"
-            >
-              Call 6390247880
-            </a>
-            <a
-              href="#admissions"
-              className="w-full md:w-auto text-center px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-[#FFC928] text-[#071D43] hover:bg-[#FFD858] transition-colors"
-            >
-              Enquire Online
-            </a>
+
+          <div className="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm flex flex-col sm:flex-row lg:flex-col xl:flex-row items-start sm:items-center lg:items-start xl:items-center justify-between gap-6 h-full">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-[#071D43] text-[#FFC928] flex items-center justify-center flex-shrink-0 font-bold">
+                <Sparkles className="w-6 h-6" />
+              </div>
+              <div>
+                <h4 className="text-base sm:text-lg font-bold text-[#071D43]">
+                  Need guidance choosing the right course for your goals?
+                </h4>
+                <p className="text-xs sm:text-sm text-slate-500">
+                  Talk to our academic counsellors today for personalized batch details and syllabus roadmaps.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 w-full sm:w-auto lg:w-full xl:w-auto flex-shrink-0">
+              <a
+                href="tel:6390247880"
+                className="w-full sm:w-auto text-center px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-[#071D43] text-white hover:bg-[#123C78] transition-colors whitespace-nowrap"
+              >
+                Call 6390247880
+              </a>
+              <a
+                href="#admissions"
+                className="w-full sm:w-auto text-center px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-[#FFC928] text-[#071D43] hover:bg-[#FFD858] transition-colors whitespace-nowrap"
+              >
+                Enquire Online
+              </a>
+            </div>
           </div>
         </div>
       </div>

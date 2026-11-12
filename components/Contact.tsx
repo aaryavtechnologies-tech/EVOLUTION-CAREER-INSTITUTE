@@ -145,11 +145,11 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Location & Map Interactive Block */}
+        {/* Location, Map & Backpack Showcase Block */}
         <div className="rounded-3xl border border-slate-200 bg-slate-50 overflow-hidden shadow-sm">
           <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
             {/* Location Description Panel */}
-            <div className="lg:col-span-5 p-8 sm:p-10 flex flex-col justify-between bg-white border-b lg:border-b-0 lg:border-r border-slate-200">
+            <div className="lg:col-span-4 p-8 flex flex-col justify-between bg-white border-b lg:border-b-0 lg:border-r border-slate-200">
               <div>
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-2.5 rounded-xl bg-[#071D43] text-[#FFC928]">
@@ -204,7 +204,7 @@ export default function Contact() {
             </div>
 
             {/* Embedded Google Map Iframe */}
-            <div className="lg:col-span-7 h-[340px] sm:h-[400px] w-full relative bg-slate-200">
+            <div className="lg:col-span-5 h-[340px] sm:h-[400px] lg:h-[430px] w-full relative bg-slate-200 border-b lg:border-b-0 lg:border-r border-slate-200">
               <iframe
                 title="Evolution Career Institute Lucknow Location"
                 src="https://maps.google.com/maps?q=Neelkanth+Complex,+Sadar+Cantt,+Lucknow&t=&z=15&ie=UTF8&iwloc=&output=embed"
@@ -212,6 +212,16 @@ export default function Contact() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
+            </div>
+
+            {/* Institute Backpack Visual (No Heading) */}
+            <div className="lg:col-span-3 h-[420px] lg:h-[430px] w-full bg-slate-100 overflow-hidden flex items-center justify-center">
+              <img
+                src="/images/gallery/bag.jpg"
+                alt="Evolution Career Institute backpack for NEET, IIT JEE, NDA, Boards and Sainik School"
+                className="w-full h-full object-contain sm:object-cover sm:object-bottom hover:scale-[1.02] transition-transform duration-500"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>

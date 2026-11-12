@@ -132,8 +132,8 @@ export default function WhyChooseUs() {
           })}
         </div>
 
-        {/* Bottom Row for the remaining 2 cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto mt-6 lg:mt-8">
+        {/* Bottom Row for the remaining 2 cards + Headingless Institute Hoodie Photo */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-6 lg:mt-8">
           {features.slice(3, 5).map((feat, index) => {
             const Icon = feat.icon;
             return (
@@ -173,6 +173,15 @@ export default function WhyChooseUs() {
               </div>
             );
           })}
+
+          <div className="group md:col-span-2 lg:col-span-1 rounded-2xl overflow-hidden bg-[#f6f6f6] border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex items-center justify-center hover:-translate-y-1">
+            <img
+              src="/images/gallery/hoodie.jpg"
+              alt="Evolution Career Institute winter hoodie uniform for NEET, IIT JEE, NDA, Boards and Sainik School"
+              className="w-full h-full object-contain group-hover:scale-[1.03] transition-transform duration-500"
+              loading="lazy"
+            />
+          </div>
         </div>
 
         {/* Bottom Callout Strip */}

@@ -43,32 +43,32 @@ export default function About() {
     <section id="about" className="py-20 lg:py-28 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left Column: Educational Photo & Badges */}
+          {/* Left Column: Institute Certification & Study Desk Photo */}
           <div className="lg:col-span-5 relative order-2 lg:order-1">
-            <div className="relative mx-auto max-w-md lg:max-w-none">
+            <div className="relative mx-auto max-w-[340px]">
               {/* Decorative Background Accent */}
-              <div className="absolute -top-4 -left-4 w-full h-full rounded-2xl bg-[#071D43]/5 border-2 border-[#123C78]/10 -z-10"></div>
-              
+              <div className="absolute -top-3 -left-3 w-full h-full rounded-2xl bg-[#071D43]/5 border-2 border-[#123C78]/10 -z-10"></div>
+
               <div className="rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100">
                 <img
-                  src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=900&auto=format&fit=crop"
-                  alt="Evolution Career Institute classroom learning and mentorship"
-                  className="w-full h-[440px] object-cover hover:scale-105 transition-transform duration-500"
+                  src="/images/gallery/certificate-lab.jpg"
+                  alt="Evolution Career Institute academic mentor certification and science study resources"
+                  className="w-full h-auto block object-cover hover:scale-[1.02] transition-transform duration-500"
                   loading="lazy"
                 />
               </div>
 
-              {/* Mentorship Badge */}
-              <div className="absolute -bottom-6 -right-4 sm:-right-6 bg-[#071D43] text-white p-5 rounded-2xl shadow-xl border border-[#FFC928]/30 max-w-xs">
+              {/* Mentorship Info Strip Below Image */}
+              <div className="mt-4 bg-[#071D43] text-white p-4 rounded-2xl shadow-lg border border-[#FFC928]/30">
                 <div className="flex items-center gap-3">
-                  <div className="p-2.5 rounded-xl bg-[#FFC928] text-[#071D43] font-bold">
-                    <BookOpen className="w-6 h-6" />
+                  <div className="p-2.5 rounded-xl bg-[#FFC928] text-[#071D43] font-bold flex-shrink-0">
+                    <BookOpen className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-[#FFC928] uppercase tracking-wider">
+                    <p className="text-[11px] font-bold text-[#FFC928] uppercase tracking-wider">
                       Academic Heritage
                     </p>
-                    <p className="text-sm font-bold text-white mt-0.5">
+                    <p className="text-xs sm:text-sm font-bold text-white mt-0.5">
                       An Initiative of IIT JEE Qualified Mentors
                     </p>
                   </div>
