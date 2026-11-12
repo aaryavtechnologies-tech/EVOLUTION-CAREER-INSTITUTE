@@ -122,7 +122,7 @@ export default function Logo({
       </div>
 
       {/* Typography */}
-      <div className="flex flex-col leading-none">
+      <div className="flex flex-col leading-none whitespace-nowrap">
         <div className="flex items-center gap-1.5">
           <span
             className={`${titleClasses[size]} uppercase tracking-wider ${
@@ -148,7 +148,7 @@ export default function Logo({
               isLight ? "text-slate-300" : "text-slate-500"
             }`}
           >
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#D71920]"></span>
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#D71920] flex-shrink-0"></span>
             IIT JEE Qualified Mentors
           </span>
         )}

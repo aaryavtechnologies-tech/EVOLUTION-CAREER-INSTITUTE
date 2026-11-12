@@ -21,7 +21,21 @@ export default function Navbar() {
     { name: "About Us", href: "#about" },
     { name: "Courses", href: "#courses" },
     { name: "Why Choose Us", href: "#why-choose-us" },
-    { name: "Crash Course", href: "#crash-course" },
+    {
+      name: "Special Offer",
+      href: "#special-offer",
+      badge: "50% OFF",
+    },
+    { name: "Contact", href: "#contact" },
+  ];
+
+  const mobileLinks = [
+    { name: "Home", href: "#home" },
+    { name: "About Us", href: "#about" },
+    { name: "Courses", href: "#courses" },
+    { name: "Class 10 Toppers", href: "#toppers" },
+    { name: "Why Choose Us", href: "#why-choose-us" },
+    { name: "Crash Course 2026", href: "#crash-course" },
     {
       name: "Special Offer",
       href: "#special-offer",
@@ -34,13 +48,13 @@ export default function Navbar() {
     <>
       {/* Top Notification / Quick Contact Bar */}
       <div className="bg-[#071D43] text-white text-xs py-2 px-4 border-b border-white/10 hidden md:block">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <span className="flex items-center gap-1.5 text-slate-300">
-              <MapPin className="w-3.5 h-3.5 text-[#FFC928]" />
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+          <div className="flex items-center gap-4 xl:gap-6 min-w-0">
+            <span className="flex items-center gap-1.5 text-slate-300 whitespace-nowrap truncate">
+              <MapPin className="w-3.5 h-3.5 text-[#FFC928] flex-shrink-0" />
               Neelkanth Complex, Sadar Cantt, Lucknow
             </span>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3 whitespace-nowrap flex-shrink-0">
               <a
                 href="tel:6390247880"
                 className="flex items-center gap-1.5 text-slate-200 hover:text-[#FFC928] transition-colors font-medium"
@@ -58,10 +72,18 @@ export default function Navbar() {
               </a>
             </div>
           </div>
-          <div className="flex items-center gap-3">
-            <span className="inline-flex items-center gap-1.5 bg-[#D71920]/90 text-white font-semibold text-[11px] px-2.5 py-0.5 rounded-full uppercase tracking-wider animate-pulse">
+
+          <div className="flex items-center gap-3 whitespace-nowrap flex-shrink-0">
+            <a
+              href="#crash-course"
+              className="hidden xl:inline-flex items-center gap-1 text-slate-200 hover:text-[#FFC928] transition-colors font-semibold text-[11px]"
+            >
+              Crash Course: 15 Nov
+            </a>
+            <span className="hidden xl:inline text-white/30">|</span>
+            <span className="inline-flex items-center gap-1.5 bg-[#D71920]/90 text-white font-semibold text-[11px] px-2.5 py-0.5 rounded-full uppercase tracking-wider">
               <Sparkles className="w-3 h-3 text-[#FFC928]" />
-              Diwali Offer: 50% Off Limited Seats
+              Diwali Offer: 50% Off
             </span>
             <a
               href="#admissions"
@@ -77,28 +99,29 @@ export default function Navbar() {
       <header
         className={`sticky top-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-lg py-3 border-b border-slate-200"
-            : "bg-white py-4 shadow-sm"
+            ? "bg-white/95 backdrop-blur-md shadow-lg py-2.5 border-b border-slate-200"
+            : "bg-white py-3.5 shadow-sm"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-3 xl:gap-4">
             {/* Logo */}
-            <a href="#home" className="flex items-center group">
-              <Logo variant="dark" size="md" />
+            <a href="#home" className="flex items-center flex-shrink-0 group">
+              <Logo variant="dark" size="sm" className="xl:hidden" />
+              <Logo variant="dark" size="md" className="hidden xl:flex" />
             </a>
 
-            {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+            {/* Desktop Navigation Links (Strictly Single-Line Aligned) */}
+            <nav className="hidden lg:flex items-center justify-center gap-0.5 xl:gap-1.5 flex-nowrap">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="relative px-3 py-2 text-sm font-semibold text-[#071D43] hover:text-[#D71920] rounded-md transition-colors flex items-center gap-1.5"
+                  className="inline-flex items-center gap-1.5 px-2 xl:px-3 py-2 text-[13px] xl:text-sm font-semibold text-[#071D43] hover:text-[#D71920] hover:bg-slate-50 rounded-lg transition-colors whitespace-nowrap flex-shrink-0 leading-none"
                 >
-                  {link.name}
+                  <span>{link.name}</span>
                   {link.badge && (
-                    <span className="bg-[#D71920] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full uppercase tracking-tight shadow-sm animate-bounce">
+                    <span className="inline-flex items-center bg-[#D71920] text-white text-[9px] xl:text-[10px] font-extrabold px-1.5 py-0.5 rounded-full uppercase tracking-tight shadow-sm whitespace-nowrap leading-none">
                       {link.badge}
                     </span>
                   )}
@@ -106,31 +129,29 @@ export default function Navbar() {
               ))}
             </nav>
 
-            {/* CTA Button */}
-            <div className="hidden sm:flex items-center gap-3">
+            {/* Right Actions: Desktop CTA + Mobile Controls */}
+            <div className="flex items-center gap-2 flex-shrink-0">
               <a
                 href="#admissions"
-                className="relative inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg font-bold text-sm text-[#071D43] bg-gradient-to-r from-[#FFC928] via-[#FFD858] to-[#FFC928] shadow-[0_4px_14px_rgba(255,201,40,0.45)] hover:shadow-[0_6px_20px_rgba(255,201,40,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all border border-[#E0AD15]"
+                className="hidden sm:inline-flex items-center justify-center gap-1.5 px-3.5 xl:px-5 py-2 xl:py-2.5 rounded-lg font-bold text-[13px] xl:text-sm text-[#071D43] bg-gradient-to-r from-[#FFC928] via-[#FFD858] to-[#FFC928] shadow-[0_4px_14px_rgba(255,201,40,0.4)] hover:shadow-[0_6px_20px_rgba(255,201,40,0.55)] hover:scale-[1.02] active:scale-[0.98] transition-all border border-[#E0AD15] whitespace-nowrap flex-shrink-0 leading-none"
               >
                 <span>Admissions Open – Enquire Now</span>
-                <ArrowRight className="w-4 h-4 text-[#071D43]" />
+                <ArrowRight className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-[#071D43] flex-shrink-0" />
               </a>
-            </div>
 
-            {/* Mobile Hamburger Toggle */}
-            <div className="flex lg:hidden items-center gap-2">
               <a
                 href="#admissions"
-                className="sm:hidden px-3 py-1.5 rounded-md text-xs font-bold text-[#071D43] bg-[#FFC928] border border-[#E0AD15]"
+                className="sm:hidden px-3 py-1.5 rounded-md text-xs font-bold text-[#071D43] bg-[#FFC928] border border-[#E0AD15] whitespace-nowrap"
               >
                 Enquire
               </a>
+
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-expanded={mobileMenuOpen}
                 aria-label="Toggle navigation menu"
-                className="p-2 rounded-lg text-[#071D43] hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-[#071D43]"
+                className="lg:hidden p-2 rounded-lg text-[#071D43] hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-[#071D43]"
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
@@ -138,11 +159,11 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Navigation Drawer */}
+        {/* Mobile / Tablet Navigation Drawer */}
         {mobileMenuOpen && (
           <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 shadow-xl animate-in slide-in-from-top-2 duration-200">
-            <div className="flex flex-col space-y-2">
-              {navLinks.map((link) => (
+            <div className="flex flex-col space-y-1.5">
+              {mobileLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
@@ -195,4 +216,3 @@ export default function Navbar() {
     </>
   );
 }
-
