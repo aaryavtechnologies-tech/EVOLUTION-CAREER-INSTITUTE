@@ -11,6 +11,7 @@ export default function Footer() {
     { name: "Crash Course 2026", href: "#crash-course" },
     { name: "Diwali Special Offer", href: "#special-offer" },
     { name: "Admissions", href: "#admissions" },
+    { name: "Reviews", href: "#reviews" },
     { name: "Contact", href: "#contact" },
   ];
 

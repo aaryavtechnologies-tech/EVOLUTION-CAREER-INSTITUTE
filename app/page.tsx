@@ -11,6 +11,7 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import CrashCourse from "@/components/CrashCourse";
 import DiwaliOffer from "@/components/DiwaliOffer";
 import AdmissionEnquiry from "@/components/AdmissionEnquiry";
+import Reviews from "@/components/Reviews";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import FloatingContact from "@/components/FloatingContact";
@@ -72,6 +73,9 @@ export default function Home() {
           initialClass={selectedClass}
           isOfferClaimed={isOfferClaimed}
         />
+
+        {/* Student & Parent Reviews Section */}
+        <Reviews />
 
         {/* SECTION 9: Contact Us */}
         <Contact />
