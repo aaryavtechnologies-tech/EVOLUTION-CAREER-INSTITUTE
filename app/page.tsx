@@ -9,7 +9,6 @@ import Toppers from "@/components/Toppers";
 import Memories from "@/components/Memories";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import CrashCourse from "@/components/CrashCourse";
-import DiwaliOffer from "@/components/DiwaliOffer";
 import AdmissionEnquiry from "@/components/AdmissionEnquiry";
 import Reviews from "@/components/Reviews";
 import Contact from "@/components/Contact";
@@ -19,22 +18,15 @@ import FloatingContact from "@/components/FloatingContact";
 export default function Home() {
   const [selectedCourse, setSelectedCourse] = useState("NEET");
   const [selectedClass, setSelectedClass] = useState("11th");
-  const [isOfferClaimed, setIsOfferClaimed] = useState(false);
 
   const handleSelectCourse = (courseName: string, className: string) => {
     setSelectedCourse(courseName);
     setSelectedClass(className);
-    setIsOfferClaimed(false);
-  };
-
-  const handleClaimDiwaliOffer = () => {
-    setIsOfferClaimed(true);
   };
 
   const handleEnquireCrashCourse = () => {
     setSelectedCourse("Boards");
     setSelectedClass("12th");
-    setIsOfferClaimed(false);
   };
 
   return (
@@ -64,14 +56,10 @@ export default function Home() {
         {/* SECTION 6: Crash Course Promotion */}
         <CrashCourse onEnquireCrashCourse={handleEnquireCrashCourse} />
 
-        {/* SECTION 7: Diwali Special Offer */}
-        <DiwaliOffer onClaimOffer={handleClaimDiwaliOffer} />
-
-        {/* SECTION 8: Admission Enquiry */}
+        {/* SECTION 7: Admission Enquiry */}
         <AdmissionEnquiry
           initialCourse={selectedCourse}
           initialClass={selectedClass}
-          isOfferClaimed={isOfferClaimed}
         />
 
         {/* Student & Parent Reviews Section */}

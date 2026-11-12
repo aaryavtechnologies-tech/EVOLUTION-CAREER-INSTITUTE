@@ -82,10 +82,6 @@ const jsonLd = {
     addressCountry: "IN",
   },
   telephone: ["+916390247880", "+917390092459"],
-  offers: {
-    "@type": "Offer",
-    description: "50% Discount Early Bird Diwali Special Offer on competitive batches",
-  },
 };
 
 export default function RootLayout({

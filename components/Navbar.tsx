@@ -21,11 +21,7 @@ export default function Navbar() {
     { name: "About Us", href: "#about" },
     { name: "Courses", href: "#courses" },
     { name: "Why Choose Us", href: "#why-choose-us" },
-    {
-      name: "Special Offer",
-      href: "#special-offer",
-      badge: "50% OFF",
-    },
+    { name: "Reviews", href: "#reviews" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -36,11 +32,7 @@ export default function Navbar() {
     { name: "Class 10 Toppers", href: "#toppers" },
     { name: "Why Choose Us", href: "#why-choose-us" },
     { name: "Crash Course 2026", href: "#crash-course" },
-    {
-      name: "Special Offer",
-      href: "#special-offer",
-      badge: "50% OFF",
-    },
+    { name: "Reviews", href: "#reviews" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -83,7 +75,7 @@ export default function Navbar() {
             <span className="hidden xl:inline text-white/30">|</span>
             <span className="inline-flex items-center gap-1.5 bg-[#D71920]/90 text-white font-semibold text-[11px] px-2.5 py-0.5 rounded-full uppercase tracking-wider">
               <Sparkles className="w-3 h-3 text-[#FFC928]" />
-              Diwali Offer: 50% Off
+              Admissions Open 2026-27
             </span>
             <a
               href="#admissions"
@@ -120,11 +112,6 @@ export default function Navbar() {
                   className="inline-flex items-center gap-1.5 px-2 xl:px-3 py-2 text-[13px] xl:text-sm font-semibold text-[#071D43] hover:text-[#D71920] hover:bg-slate-50 rounded-lg transition-colors whitespace-nowrap flex-shrink-0 leading-none"
                 >
                   <span>{link.name}</span>
-                  {link.badge && (
-                    <span className="inline-flex items-center bg-[#D71920] text-white text-[9px] xl:text-[10px] font-extrabold px-1.5 py-0.5 rounded-full uppercase tracking-tight shadow-sm whitespace-nowrap leading-none">
-                      {link.badge}
-                    </span>
-                  )}
                 </a>
               ))}
             </nav>
@@ -171,13 +158,7 @@ export default function Navbar() {
                   className="flex items-center justify-between px-3 py-2.5 rounded-lg text-base font-semibold text-[#071D43] hover:bg-slate-50 hover:text-[#D71920] transition-colors"
                 >
                   <span>{link.name}</span>
-                  {link.badge ? (
-                    <span className="bg-[#D71920] text-white text-xs font-bold px-2 py-0.5 rounded-full">
-                      {link.badge}
-                    </span>
-                  ) : (
-                    <ArrowRight className="w-4 h-4 text-slate-400" />
-                  )}
+                  <ArrowRight className="w-4 h-4 text-slate-400" />
                 </a>
               ))}
 

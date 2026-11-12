@@ -16,13 +16,11 @@ import {
 interface AdmissionEnquiryProps {
   initialCourse?: string;
   initialClass?: string;
-  isOfferClaimed?: boolean;
 }
 
 export default function AdmissionEnquiry({
   initialCourse = "NEET",
   initialClass = "11th",
-  isOfferClaimed = false,
 }: AdmissionEnquiryProps) {
   const [formData, setFormData] = useState({
     studentName: "",
@@ -30,9 +28,7 @@ export default function AdmissionEnquiry({
     mobileNumber: "",
     selectedClass: initialClass,
     selectedCourse: initialCourse,
-    message: isOfferClaimed
-      ? "Interested in claiming the 50% Diwali Special Early Bird Offer."
-      : "",
+    message: "",
   });
 
   const [touched, setTouched] = useState<{ [key: string]: boolean }>({});
@@ -43,7 +39,7 @@ export default function AdmissionEnquiry({
 
   const formRef = useRef<HTMLFormElement>(null);
 
-  // Synchronize when initial props change from Course or Offer CTAs
+  // Synchronize when initial props change from Course or Crash Course CTAs
   useEffect(() => {
     if (initialCourse) {
       setFormData((prev) => ({ ...prev, selectedCourse: initialCourse }));
@@ -52,18 +48,6 @@ export default function AdmissionEnquiry({
       setFormData((prev) => ({ ...prev, selectedClass: initialClass }));
     }
   }, [initialCourse, initialClass]);
-
-  useEffect(() => {
-    if (isOfferClaimed) {
-      setFormData((prev) => ({
-        ...prev,
-        message:
-          "Interested in claiming the 50% Diwali Special Early Bird Offer for " +
-          prev.selectedCourse +
-          ".",
-      }));
-    }
-  }, [isOfferClaimed]);
 
   const validateField = (name: string, value: string) => {
     let error = "";
@@ -211,8 +195,8 @@ export default function AdmissionEnquiry({
                   desc: "Comprehensive modules, chapter notes, and regular evaluations with detailed reports.",
                 },
                 {
-                  title: "Festive Early Bird Advantage",
-                  desc: "Avail 50% Diwali discount and priority seating for upcoming batches.",
+                  title: "Dedicated Doubt Clearing",
+                  desc: "Regular doubt-solving sessions and personalized academic counselling for every student.",
                 },
                 {
                   title: "Fast-Track Crash Course Available",
