@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
-import { Camera, Sparkles, X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
+import { Camera, Sparkles, X, ChevronLeft, ChevronRight, ZoomIn, Pause, Play } from "lucide-react";
 
 interface MemoryPhoto {
   id: number;
@@ -9,12 +9,23 @@ interface MemoryPhoto {
   title: string;
   caption: string;
   tag: string;
-  gridClass: string;
   imgPosition?: string;
 }
 
 export default function Memories() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [autoPlayEnabled, setAutoPlayEnabled] = useState(true);
+  const [statusMessage, setStatusMessage] = useState("");
+
+  const trackRef = useRef<HTMLDivElement>(null);
+  const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const pendingTargetRef = useRef<number | null>(null);
+  const activeSlideRef = useRef(0);
+  const lastSettledRef = useRef(0);
+  const rafRef = useRef<number | null>(null);
+  const settleTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const photos: MemoryPhoto[] = [
     {
@@ -23,7 +34,6 @@ export default function Memories() {
       title: "Batch Celebration & Victory Moments",
       caption: "Students celebrating together with mentors at Evolution Career Institute.",
       tag: "Celebration",
-      gridClass: "sm:col-span-2 lg:col-span-5 h-64 sm:h-72",
       imgPosition: "object-top",
     },
     {
@@ -32,7 +42,6 @@ export default function Memories() {
       title: "Classroom Achievers Felicitation",
       caption: "Early classroom batch honoured with garlands and appreciation certificates.",
       tag: "Memories",
-      gridClass: "sm:col-span-1 lg:col-span-4 h-64 sm:h-72",
       imgPosition: "object-center",
     },
     {
@@ -41,7 +50,6 @@ export default function Memories() {
       title: "Mentorship & Senior Batch",
       caption: "Dedicated mentors and students in Evolution Career Institute uniform.",
       tag: "Mentorship",
-      gridClass: "sm:col-span-1 lg:col-span-3 h-64 sm:h-72",
       imgPosition: "object-top",
     },
     {
@@ -50,7 +58,6 @@ export default function Memories() {
       title: "Topper Award Presentation",
       caption: "Honouring student achievement alongside parents and faculty.",
       tag: "Felicitation",
-      gridClass: "sm:col-span-1 lg:col-span-3 lg:row-span-2 h-80 lg:h-[456px]",
       imgPosition: "object-top",
     },
     {
@@ -59,7 +66,6 @@ export default function Memories() {
       title: "Foundation Batch Classroom",
       caption: "Students and faculty together in our classic classroom sessions.",
       tag: "Classroom",
-      gridClass: "sm:col-span-2 lg:col-span-6 h-64 lg:h-[220px]",
       imgPosition: "object-center",
     },
     {
@@ -68,7 +74,6 @@ export default function Memories() {
       title: "Festive & Result Celebrations",
       caption: "Sharing sweets and smiling moments after milestone achievements.",
       tag: "Celebration",
-      gridClass: "sm:col-span-1 lg:col-span-3 lg:row-span-2 h-80 lg:h-[456px]",
       imgPosition: "object-top",
     },
     {
@@ -77,7 +82,6 @@ export default function Memories() {
       title: "Focused Study Sessions",
       caption: "Students deeply engaged in classroom practice and concept building.",
       tag: "Study Hour",
-      gridClass: "sm:col-span-1 lg:col-span-3 h-64 lg:h-[220px]",
       imgPosition: "object-center",
     },
     {
@@ -86,10 +90,154 @@ export default function Memories() {
       title: "Candid Batch Moments",
       caption: "Memorable interactive gatherings with students at our Lucknow campus.",
       tag: "Campus Life",
-      gridClass: "sm:col-span-1 lg:col-span-3 h-64 lg:h-[220px]",
       imgPosition: "object-top",
     },
   ];
+
+  const getNearestSlideIndex = useCallback(() => {
+    const track = trackRef.current;
+    if (!track) return 0;
+
+    const trackRect = track.getBoundingClientRect();
+    const trackCenter = trackRect.left + trackRect.width / 2;
+    let nearestIdx = 0;
+    let minDistance = Number.POSITIVE_INFINITY;
+
+    slideRefs.current.forEach((slide, idx) => {
+      if (!slide) return;
+      const rect = slide.getBoundingClientRect();
+      const slideCenter = rect.left + rect.width / 2;
+      const dist = Math.abs(slideCenter - trackCenter);
+      if (dist < minDistance) {
+        minDistance = dist;
+        nearestIdx = idx;
+      }
+    });
+
+    return nearestIdx;
+  }, []);
+
+  const scrollToSlide = useCallback(
+    (targetIdx: number) => {
+      const track = trackRef.current;
+      const slide = slideRefs.current[targetIdx];
+      if (!track || !slide) return;
+
+      const trackRect = track.getBoundingClientRect();
+      const slideRect = slide.getBoundingClientRect();
+      const trackCenter = trackRect.left + trackRect.width / 2;
+      const slideCenter = slideRect.left + slideRect.width / 2;
+      const delta = slideCenter - trackCenter;
+
+      pendingTargetRef.current = targetIdx;
+      if (activeSlideRef.current !== targetIdx) {
+        activeSlideRef.current = targetIdx;
+        setActiveSlide(targetIdx);
+      }
+
+      const prefersReducedMotion =
+        typeof window !== "undefined" &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      track.scrollBy({
+        left: delta,
+        behavior: prefersReducedMotion ? "auto" : "smooth",
+      });
+
+      // Ensure pending target clears even if smooth scroll finishes without scrollend on edges
+      if (settleTimeoutRef.current) clearTimeout(settleTimeoutRef.current);
+      settleTimeoutRef.current = setTimeout(() => {
+        pendingTargetRef.current = null;
+      }, 650);
+    },
+    []
+  );
+
+  const handleSlidePrev = useCallback(() => {
+    const base = pendingTargetRef.current ?? getNearestSlideIndex();
+    const prevIdx = (base - 1 + photos.length) % photos.length;
+    scrollToSlide(prevIdx);
+  }, [getNearestSlideIndex, photos.length, scrollToSlide]);
+
+  const handleSlideNext = useCallback(() => {
+    const base = pendingTargetRef.current ?? getNearestSlideIndex();
+    const nextIdx = (base + 1) % photos.length;
+    scrollToSlide(nextIdx);
+  }, [getNearestSlideIndex, photos.length, scrollToSlide]);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const handleSettled = () => {
+      const settled = getNearestSlideIndex();
+      pendingTargetRef.current = null;
+      if (activeSlideRef.current !== settled) {
+        activeSlideRef.current = settled;
+        setActiveSlide(settled);
+      }
+      if (settled !== lastSettledRef.current) {
+        lastSettledRef.current = settled;
+        setStatusMessage(`Slide ${settled + 1} of ${photos.length}`);
+      }
+    };
+
+    const supportsScrollEnd = "onscrollend" in window;
+
+    const onScroll = () => {
+      if (pendingTargetRef.current === null) {
+        if (rafRef.current === null) {
+          rafRef.current = requestAnimationFrame(() => {
+            rafRef.current = null;
+            if (pendingTargetRef.current !== null) return;
+            const nearest = getNearestSlideIndex();
+            if (activeSlideRef.current !== nearest) {
+              activeSlideRef.current = nearest;
+              setActiveSlide(nearest);
+            }
+          });
+        }
+      }
+
+      if (!supportsScrollEnd) {
+        if (settleTimeoutRef.current) clearTimeout(settleTimeoutRef.current);
+        settleTimeoutRef.current = setTimeout(handleSettled, 160);
+      }
+    };
+
+    track.addEventListener("scroll", onScroll, { passive: true });
+    if (supportsScrollEnd) {
+      track.addEventListener("scrollend", handleSettled, { passive: true });
+    }
+
+    return () => {
+      track.removeEventListener("scroll", onScroll);
+      if (supportsScrollEnd) {
+        track.removeEventListener("scrollend", handleSettled);
+      }
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+      if (settleTimeoutRef.current) clearTimeout(settleTimeoutRef.current);
+    };
+  }, [getNearestSlideIndex, photos.length]);
+
+  useEffect(() => {
+    if (!autoPlayEnabled || isPaused || selectedIndex !== null) return;
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+
+    const interval = setInterval(() => {
+      if (document.visibilityState === "visible") {
+        const base = pendingTargetRef.current ?? getNearestSlideIndex();
+        scrollToSlide((base + 1) % photos.length);
+      }
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, [autoPlayEnabled, isPaused, selectedIndex, getNearestSlideIndex, scrollToSlide, photos.length]);
 
   const handleClose = useCallback(() => {
     setSelectedIndex(null);
@@ -151,55 +299,164 @@ export default function Memories() {
           </p>
         </div>
 
-        {/* 12-Column Balanced Bento Photo Gallery */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4">
-          {photos.map((photo, index) => (
+        {/* Horizontal Scroll-Snap Sliding Photo Carousel */}
+        <div
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="Campus memories photo slider"
+          className="relative"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onFocusCapture={() => setIsPaused(true)}
+          onBlurCapture={(e) => {
+            if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+              setIsPaused(false);
+            }
+          }}
+        >
+          {/* Previous / Next Controls placed before track in DOM order */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 right-0 z-10 flex items-center justify-between px-1 sm:px-3">
             <button
-              key={photo.id}
               type="button"
-              onClick={() => setSelectedIndex(index)}
-              aria-label={`View photo: ${photo.title}`}
-              className={`group relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 text-left focus:outline-none focus:ring-2 focus:ring-[#FFC928] cursor-pointer ${photo.gridClass}`}
+              onClick={handleSlidePrev}
+              aria-label="Previous slide"
+              style={{ touchAction: "manipulation" }}
+              className="pointer-events-auto w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#071D43]/85 hover:bg-[#FFC928] text-white hover:text-[#071D43] border border-white/25 shadow-lg backdrop-blur-md flex items-center justify-center transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFC928] cursor-pointer"
             >
-              <img
-                src={photo.src}
-                alt={photo.title}
-                loading="lazy"
-                className={`w-full h-full object-cover ${
-                  photo.imgPosition || "object-center"
-                } group-hover:scale-105 transition-transform duration-500`}
-              />
-
-              {/* Subtle Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#071D43]/90 via-[#071D43]/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity"></div>
-
-              {/* Top Tag & Zoom Icon */}
-              <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
-                <span className="px-2.5 py-0.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-[10px] font-bold uppercase tracking-wider text-white">
-                  {photo.tag}
-                </span>
-                <span className="p-1.5 rounded-full bg-black/40 text-white opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm">
-                  <ZoomIn className="w-3.5 h-3.5 text-[#FFC928]" />
-                </span>
-              </div>
-
-              {/* Bottom Caption */}
-              <div className="absolute bottom-3 left-3.5 right-3.5">
-                <h3 className="text-sm sm:text-base font-bold text-white leading-snug">
-                  {photo.title}
-                </h3>
-                <p className="text-[11px] text-slate-200 line-clamp-1 mt-0.5 opacity-90">
-                  {photo.caption}
-                </p>
-              </div>
+              <ChevronLeft className="w-5 h-5" />
             </button>
-          ))}
+            <button
+              type="button"
+              onClick={handleSlideNext}
+              aria-label="Next slide"
+              style={{ touchAction: "manipulation" }}
+              className="pointer-events-auto w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#071D43]/85 hover:bg-[#FFC928] text-white hover:text-[#071D43] border border-white/25 shadow-lg backdrop-blur-md flex items-center justify-center transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFC928] cursor-pointer"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* Scrollable Track */}
+          <div
+            ref={trackRef}
+            tabIndex={0}
+            role="group"
+            aria-label="Memory slides"
+            onTouchStart={() => setIsPaused(true)}
+            onTouchEnd={() => setIsPaused(false)}
+            className="memories-carousel-track gap-4 sm:gap-5 px-2 sm:px-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#123C78] rounded-2xl"
+          >
+            {photos.map((photo, index) => (
+              <div
+                key={photo.id}
+                ref={(el) => {
+                  slideRefs.current[index] = el;
+                }}
+                role="group"
+                aria-roledescription="slide"
+                aria-label={`${index + 1} of ${photos.length}`}
+                data-marker-name={`Go to slide ${index + 1}: ${photo.title}`}
+                className="memories-carousel-slide flex-none w-[84%] sm:w-[48%] lg:w-[32.2%]"
+              >
+                <button
+                  type="button"
+                  onClick={() => setSelectedIndex(index)}
+                  aria-label={`View photo: ${photo.title}`}
+                  className={`group relative w-full h-72 sm:h-80 rounded-2xl overflow-hidden bg-slate-900 border shadow-md hover:shadow-xl transition-all duration-300 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFC928] cursor-pointer ${
+                    activeSlide === index
+                      ? "border-[#FFC928] ring-2 ring-[#FFC928]/40"
+                      : "border-slate-200"
+                  }`}
+                >
+                  <img
+                    src={photo.src}
+                    alt={photo.title}
+                    loading="lazy"
+                    className={`w-full h-full object-cover ${
+                      photo.imgPosition || "object-center"
+                    } group-hover:scale-105 transition-transform duration-500`}
+                  />
+
+                  {/* Subtle Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#071D43]/90 via-[#071D43]/20 to-transparent opacity-75 group-hover:opacity-90 transition-opacity"></div>
+
+                  {/* Top Tag & Zoom Icon */}
+                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
+                    <span className="px-2.5 py-0.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-[10px] font-bold uppercase tracking-wider text-white">
+                      {photo.tag}
+                    </span>
+                    <span className="p-1.5 rounded-full bg-black/40 text-white opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm">
+                      <ZoomIn className="w-3.5 h-3.5 text-[#FFC928]" />
+                    </span>
+                  </div>
+
+                  {/* Bottom Caption */}
+                  <div className="absolute bottom-3 left-3.5 right-3.5">
+                    <h3 className="text-sm sm:text-base font-bold text-white leading-snug">
+                      {photo.title}
+                    </h3>
+                    <p className="text-[11px] text-slate-200 line-clamp-1 mt-0.5 opacity-90">
+                      {photo.caption}
+                    </p>
+                  </div>
+                </button>
+              </div>
+            ))}
+          </div>
+
+          {/* Screen-reader polite live status */}
+          <p className="sr-only" role="status" aria-live="polite">
+            {statusMessage}
+          </p>
+
+          {/* Bottom Controls: Slide Marker Dots + Auto-slide Play/Pause */}
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
+            <nav aria-label="Choose a slide" className="flex items-center gap-2">
+              {photos.map((photo, index) => {
+                const isActive = activeSlide === index;
+                return (
+                  <button
+                    key={photo.id}
+                    type="button"
+                    onClick={() => scrollToSlide(index)}
+                    aria-label={`Go to slide ${index + 1}: ${photo.title}`}
+                    aria-current={isActive ? "true" : undefined}
+                    style={{ touchAction: "manipulation" }}
+                    className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#123C78] ${
+                      isActive
+                        ? "w-8 bg-[#D71920] shadow-sm"
+                        : "w-2.5 bg-slate-300 hover:bg-[#123C78]/60"
+                    }`}
+                  />
+                );
+              })}
+            </nav>
+
+            <button
+              type="button"
+              onClick={() => setAutoPlayEnabled((prev) => !prev)}
+              aria-label={autoPlayEnabled ? "Pause auto-sliding" : "Resume auto-sliding"}
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-slate-200 hover:border-[#123C78] text-[11px] font-bold text-[#071D43] shadow-sm transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#123C78]"
+            >
+              {autoPlayEnabled ? (
+                <>
+                  <Pause className="w-3 h-3 text-[#D71920]" />
+                  <span>Auto Slide On</span>
+                </>
+              ) : (
+                <>
+                  <Play className="w-3 h-3 text-emerald-600" />
+                  <span>Paused</span>
+                </>
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Gentle Note */}
-        <p className="text-center text-xs text-slate-500 mt-6 flex items-center justify-center gap-1.5">
+        <p className="text-center text-xs text-slate-500 mt-4 flex items-center justify-center gap-1.5">
           <Sparkles className="w-3.5 h-3.5 text-[#D71920]" />
-          <span>Click any photograph to view full size</span>
+          <span>Swipe, use arrows, or click any photograph to view full size</span>
         </p>
       </div>
 
@@ -269,3 +526,4 @@ export default function Memories() {
     </section>
   );
 }
+

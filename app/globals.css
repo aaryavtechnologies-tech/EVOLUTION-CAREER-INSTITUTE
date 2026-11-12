@@ -69,3 +69,28 @@ body {
   animation: diya-glow 2s ease-in-out infinite alternate;
 }
 
+/* Native Scroll-Snap Memories Carousel */
+.memories-carousel-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  touch-action: manipulation;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.memories-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .memories-carousel-track {
+    scroll-behavior: smooth;
+  }
+}
+
+.memories-carousel-slide {
+  scroll-snap-align: center;
+}
+
+
