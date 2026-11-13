@@ -51,7 +51,7 @@ export default function Footer() {
 
             <div className="pt-2">
               <span className="inline-block text-xs font-semibold uppercase tracking-wider text-[#FFC928]">
-                Target Classes: Class 9th to Class 12th
+                Target Classes: Class 1st to Class 12th
               </span>
             </div>
           </div>

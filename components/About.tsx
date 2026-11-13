@@ -200,7 +200,7 @@ export default function About() {
             <div className="mt-8 pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-2 text-sm text-slate-600">
                 <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-                <span>Classes 9th to 12th &bull; Sadar Cantt, Lucknow</span>
+                <span>Classes 1st to 12th &bull; Sadar Cantt, Lucknow</span>
               </div>
               <a
                 href="#courses"

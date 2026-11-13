@@ -15,7 +15,7 @@ import {
 
 export default function Hero() {
   const badges = [
-    { text: "Classes 9th to 12th", icon: GraduationCap, color: "text-[#FFC928]" },
+    { text: "Classes 1st to 12th", icon: GraduationCap, color: "text-[#FFC928]" },
     { text: "Expert Faculty Guidance", icon: Award, color: "text-[#FFC928]" },
     { text: "Regular Tests & Analysis", icon: FileCheck2, color: "text-[#FFC928]" },
     { text: "Exam-Focused Preparation", icon: TrendingUp, color: "text-[#FFC928]" },
@@ -171,7 +171,7 @@ export default function Hero() {
                       </p>
                     </div>
                     <span className="px-2.5 py-1 rounded-md bg-[#D71920] text-white text-xs font-bold shadow">
-                      Class 9 - 12
+                      Class 1 - 12
                     </span>
                   </div>
                 </div>

@@ -189,7 +189,7 @@ export default function WhyChooseUs() {
           <div className="inline-flex flex-wrap items-center justify-center gap-4 py-3 px-6 rounded-full bg-[#071D43] text-white text-xs sm:text-sm font-medium shadow-md">
             <span className="flex items-center gap-2 text-[#FFC928] font-bold">
               <Sparkles className="w-4 h-4" />
-              Classes 9th to 12th
+              Classes 1st to 12th
             </span>
             <span className="text-slate-400 hidden sm:inline">&bull;</span>
             <span>Neelkanth Complex, Sadar Cantt, Lucknow</span>

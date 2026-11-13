@@ -483,10 +483,15 @@ export default function AdmissionEnquiry({
                         required
                         className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm text-slate-800 bg-white focus:outline-none focus:border-[#123C78] focus:ring-2 focus:ring-[#123C78]/20 transition-all cursor-pointer"
                       >
+                        <option value="1st to 5th">Class 1st – 5th (Primary / Junior)</option>
+                        <option value="6th">Class 6th</option>
+                        <option value="7th">Class 7th</option>
+                        <option value="8th">Class 8th</option>
                         <option value="9th">Class 9th</option>
                         <option value="10th">Class 10th</option>
                         <option value="11th">Class 11th</option>
                         <option value="12th">Class 12th</option>
+                        <option value="Repeater / Dropper">Repeater / Dropper Batch</option>
                       </select>
                     </div>
 

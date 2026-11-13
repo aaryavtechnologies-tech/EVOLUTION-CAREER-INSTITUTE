@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://evolutioncareerinstitute.com"),
   title: "Evolution Career Institute | NEET, IIT-JEE, CUET & NDA Coaching",
   description:
-    "Join Evolution Career Institute, Lucknow, for academic guidance and competitive exam preparation for NEET, IIT-JEE, CUET, NDA, and Classes 9th to 12th. An initiative of IIT JEE qualified mentors.",
+    "Join Evolution Career Institute, Lucknow, for academic guidance and competitive exam preparation for NEET, IIT-JEE, CUET, NDA, and Classes 1st to 12th. An initiative of IIT JEE qualified mentors.",
   keywords: [
     "Evolution Career Institute",
     "NEET Coaching Lucknow",
@@ -15,7 +15,8 @@ export const metadata: Metadata = {
     "Sainik School Entrance",
     "RMS Preparation",
     "RIMS Preparation",
-    "Board Examinations Class 9 to 12",
+    "Board Examinations Class 1 to 12",
+    "Primary and Middle School Coaching",
     "Sadar Cantt Coaching",
     "Coaching in Sadar Cantt Lucknow",
   ],
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Evolution Career Institute | NEET, IIT-JEE, CUET & NDA Coaching",
     description:
-      "An initiative of IIT JEE qualified mentors in Lucknow. Comprehensive preparation for NEET, IIT-JEE, CUET, NDA, Sainik School, and Board Examinations for Classes 9th to 12th.",
+      "An initiative of IIT JEE qualified mentors in Lucknow. Comprehensive preparation for NEET, IIT-JEE, CUET, NDA, Sainik School, and Board Examinations for Classes 1st to 12th.",
     type: "website",
     locale: "en_IN",
     siteName: "Evolution Career Institute",
@@ -52,7 +53,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Evolution Career Institute | NEET, IIT-JEE, CUET & NDA Coaching",
     description:
-      "An initiative of IIT JEE qualified mentors in Lucknow. Comprehensive preparation for NEET, IIT-JEE, CUET, NDA, Sainik School, and Board Examinations for Classes 9th to 12th.",
+      "An initiative of IIT JEE qualified mentors in Lucknow. Comprehensive preparation for NEET, IIT-JEE, CUET, NDA, Sainik School, and Board Examinations for Classes 1st to 12th.",
     images: ["/og-image.svg"],
   },
   robots: {
@@ -72,7 +73,7 @@ const jsonLd = {
   "@type": "EducationalOrganization",
   name: "Evolution Career Institute",
   description:
-    "An initiative of IIT JEE qualified mentors offering preparation for NEET, IIT-JEE, CUET, NDA, Sainik School, RMS, RIMS, and School Board Examinations for Classes 9th to 12th.",
+    "An initiative of IIT JEE qualified mentors offering preparation for NEET, IIT-JEE, CUET, NDA, Sainik School, RMS, RIMS, and School Board Examinations for Classes 1st to 12th.",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Neelkanth Complex, Near Sainik Bhojnalaya, Sadar Cantt",
