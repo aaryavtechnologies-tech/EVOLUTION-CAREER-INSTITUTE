@@ -16,25 +16,31 @@ export default function Logo({
   const isLight = variant === "light";
 
   const sizeClasses = {
-    sm: "w-10 h-10",
-    md: "w-12 h-12",
+    sm: "w-8 h-8 sm:w-10 sm:h-10",
+    md: "w-11 h-11 md:w-12 md:h-12",
     lg: "w-14 h-14 md:w-16 md:h-16",
   };
 
   const titleClasses = {
-    sm: "text-lg font-black tracking-tight",
-    md: "text-xl md:text-2xl font-black tracking-tight",
+    sm: "text-[15px] sm:text-lg font-black tracking-tight",
+    md: "text-lg md:text-2xl font-black tracking-tight",
     lg: "text-2xl md:text-3xl font-black tracking-tight",
   };
 
+  const careerInstituteClasses = {
+    sm: "text-[7.5px] sm:text-[9px] tracking-[0.12em]",
+    md: "text-[9px] md:text-[10px] tracking-[0.16em]",
+    lg: "text-[10px] md:text-xs tracking-[0.2em]",
+  };
+
   const subtitleClasses = {
-    sm: "text-[9px] tracking-widest",
-    md: "text-[10px] md:text-[11px] tracking-wider",
+    sm: "text-[7.5px] sm:text-[8.5px] tracking-wide",
+    md: "text-[9px] md:text-[10px] tracking-wider",
     lg: "text-xs tracking-wider",
   };
 
   return (
-    <div className={`flex items-center gap-3 select-none ${className}`}>
+    <div className={`flex items-center gap-2 sm:gap-3 select-none ${className}`}>
       {/* Official Institute Circular Emblem */}
       <div
         className={`relative flex-shrink-0 rounded-full overflow-hidden ${sizeClasses[size]} ${
@@ -50,7 +56,7 @@ export default function Logo({
 
       {/* Typography */}
       <div className="flex flex-col leading-none whitespace-nowrap">
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1 sm:gap-1.5">
           <span
             className={`${titleClasses[size]} uppercase tracking-wider ${
               isLight ? "text-white" : "text-[#071D43]"
@@ -59,19 +65,18 @@ export default function Logo({
           >
             Evolution
           </span>
-          <span className="text-[#D71920] font-black text-xl md:text-2xl leading-none">.</span>
+          <span className="text-[#D71920] font-black text-base sm:text-xl leading-none">.</span>
         </div>
         <span
-          className={`font-bold uppercase tracking-widest ${
+          className={`font-bold uppercase ${
             isLight ? "text-[#FFC928]" : "text-[#123C78]"
-          } text-[10px] md:text-xs mt-0.5`}
-          style={{ letterSpacing: "0.22em" }}
+          } ${careerInstituteClasses[size]} mt-0.5`}
         >
           Career Institute
         </span>
         {showTagline && (
           <span
-            className={`font-semibold ${subtitleClasses[size]} mt-1 flex items-center gap-1 ${
+            className={`font-semibold ${subtitleClasses[size]} mt-0.5 sm:mt-1 flex items-center gap-1 ${
               isLight ? "text-slate-300" : "text-slate-500"
             }`}
           >
