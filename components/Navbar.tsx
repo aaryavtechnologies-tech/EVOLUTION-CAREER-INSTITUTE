@@ -19,6 +19,7 @@ export default function Navbar() {
   const navLinks = [
     { name: "Home", href: "#home" },
     { name: "About Us", href: "#about" },
+    { name: "Faculty", href: "#faculty" },
     { name: "Courses", href: "#courses" },
     { name: "Campus Life", href: "#campus-life" },
     { name: "Reviews", href: "#reviews" },
@@ -28,6 +29,7 @@ export default function Navbar() {
   const mobileLinks = [
     { name: "Home", href: "#home" },
     { name: "About Us", href: "#about" },
+    { name: "Our Faculty", href: "#faculty" },
     { name: "Courses", href: "#courses" },
     { name: "Hall of Fame & Achievers", href: "#toppers" },
     { name: "Campus Life", href: "#campus-life" },

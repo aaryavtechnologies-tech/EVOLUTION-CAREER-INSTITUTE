@@ -6,6 +6,7 @@ export default function Footer() {
   const quickLinks = [
     { name: "Home", href: "#home" },
     { name: "About Us", href: "#about" },
+    { name: "Our Faculty & Mentors", href: "#faculty" },
     { name: "Courses", href: "#courses" },
     { name: "Hall of Fame & Achievers", href: "#toppers" },
     { name: "Why Choose Us", href: "#why-choose-us" },

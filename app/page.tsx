@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import Faculty from "@/components/Faculty";
 import Courses from "@/components/Courses";
 import Achievers from "@/components/Achievers";
 import Memories from "@/components/Memories";
@@ -47,6 +48,9 @@ export default function Home() {
 
         {/* SECTION 3: About the Institute */}
         <About />
+
+        {/* SECTION: Expert Faculty Team */}
+        <Faculty />
 
         {/* SECTION 4: Our Courses & Programs */}
         <Courses onSelectCourse={handleSelectCourse} />
