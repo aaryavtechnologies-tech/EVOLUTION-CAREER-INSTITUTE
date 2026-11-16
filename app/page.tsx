@@ -6,7 +6,6 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Courses from "@/components/Courses";
 import Achievers from "@/components/Achievers";
-import Prospectus from "@/components/Prospectus";
 import Memories from "@/components/Memories";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import CampusLife from "@/components/CampusLife";
@@ -54,9 +53,6 @@ export default function Home() {
 
         {/* Dedicated Achievers & Hall of Fame Section (Class 12th, 10th & Sainik School) */}
         <Achievers />
-
-        {/* Dedicated Prospectus & Achievements Section */}
-        <Prospectus />
 
         {/* Old Memories & Campus Moments */}
         <Memories />
