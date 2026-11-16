@@ -16,6 +16,7 @@ import {
   Clock,
   ArrowRight,
   UserCheck,
+  Landmark,
 } from "lucide-react";
 
 interface Teacher {
@@ -23,7 +24,7 @@ interface Teacher {
   name: string;
   role: string;
   subjects: string[];
-  department: "physics" | "chemistry" | "mathematics" | "biology" | "science";
+  department: "physics" | "chemistry" | "mathematics" | "biology" | "science" | "commerce";
   qualification?: string;
   experience?: string;
   highlight: string;
@@ -195,6 +196,28 @@ export default function Faculty() {
         iconColor: "text-rose-700",
       },
     },
+    {
+      id: "narayan-sharma",
+      name: "Mr. Narayan Sharma",
+      role: "Commerce Faculty",
+      subjects: ["Commerce", "Accountancy", "Economics"],
+      department: "commerce",
+      qualification: "CA Intermediate Qualified",
+      highlight: "Accountancy & Commerce Expert",
+      keySpecialties: [
+        "Financial Accounting & Double Entry Concepts",
+        "Class 11th & 12th Commerce Board Preparation",
+        "Professional Foundation for CA, CS & CUET",
+      ],
+      accentColor: {
+        bg: "bg-purple-50/80",
+        border: "border-purple-200",
+        badge: "bg-purple-600",
+        badgeText: "text-white",
+        iconBg: "bg-purple-100",
+        iconColor: "text-purple-700",
+      },
+    },
   ];
 
   const filteredTeachers =
@@ -237,6 +260,7 @@ export default function Faculty() {
             { key: "chemistry", label: "Chemistry", icon: FlaskConical },
             { key: "mathematics", label: "Mathematics", icon: Calculator },
             { key: "biology", label: "Biology (NEET)", icon: Dna },
+            { key: "commerce", label: "Commerce", icon: Landmark },
             { key: "science", label: "Science Foundation", icon: Microscope },
           ].map((tab) => {
             const Icon = tab.icon;
