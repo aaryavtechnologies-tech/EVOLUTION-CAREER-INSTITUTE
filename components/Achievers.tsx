@@ -218,8 +218,8 @@ export default function Achievers() {
     activeFilter === "all"
       ? allAchievers
       : activeFilter === "12th"
-      ? class12thAchievers
-      : class10thAchievers;
+        ? class12thAchievers
+        : class10thAchievers;
 
   return (
     <section
@@ -279,11 +279,10 @@ export default function Achievers() {
               <button
                 key={tab.key}
                 onClick={() => setActiveFilter(tab.key as any)}
-                className={`inline-flex items-center gap-2 px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
-                  isActive
-                    ? "bg-[#FFC928] text-[#071D43] shadow-lg shadow-[#FFC928]/25 scale-105"
-                    : "bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white border border-white/10"
-                }`}
+                className={`inline-flex items-center gap-2 px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${isActive
+                  ? "bg-[#FFC928] text-[#071D43] shadow-lg shadow-[#FFC928]/25 scale-105"
+                  : "bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white border border-white/10"
+                  }`}
               >
                 <Icon className={`w-4 h-4 ${isActive ? "text-[#071D43]" : "text-[#FFC928]"}`} />
                 <span>{tab.label}</span>
@@ -295,92 +294,91 @@ export default function Achievers() {
         {/* Achievers Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {displayedAchievers.map((student) => {
-              const is12th = student.batch === "12th";
-              return (
-                <div
-                  key={student.id}
-                  className={`group bg-slate-800/80 hover:bg-slate-800 rounded-2xl border transition-all duration-300 flex flex-col overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1.5 ${
-                    student.featured
-                      ? "border-[#FFC928]/60 ring-1 ring-[#FFC928]/30"
-                      : "border-white/10 hover:border-white/20"
+            const is12th = student.batch === "12th";
+            return (
+              <div
+                key={student.id}
+                className={`group bg-slate-800/80 hover:bg-slate-800 rounded-2xl border transition-all duration-300 flex flex-col overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1.5 ${student.featured
+                  ? "border-[#FFC928]/60 ring-1 ring-[#FFC928]/30"
+                  : "border-white/10 hover:border-white/20"
                   }`}
-                >
-                  {/* Photo Container */}
-                  <div className="relative w-full aspect-[4/4.6] bg-slate-900 overflow-hidden">
-                    <Image
-                      src={student.image}
-                      alt={`${student.name} - ${student.batchLabel}`}
-                      fill
-                      className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    />
+              >
+                {/* Photo Container */}
+                <div className="relative w-full aspect-[4/4.6] bg-slate-900 overflow-hidden">
+                  <Image
+                    src={student.image}
+                    alt={`${student.name} - ${student.batchLabel}`}
+                    fill
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
 
-                    {/* Batch Badge Overlay */}
-                    <div className="absolute top-3 left-3">
-                      <span
-                        className={`inline-block px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider shadow-md backdrop-blur-md ${
-                          is12th
-                            ? "bg-blue-600/90 text-white border border-blue-400/40"
-                            : student.batch === "sainik"
-                            ? "bg-red-600/90 text-white border border-red-400/40"
-                            : "bg-emerald-600/90 text-white border border-emerald-400/40"
-                        }`}
-                      >
-                        {student.batchLabel
-                          .replace(" Batch (2025–26)", "")
-                          .replace(" Batch", "")
-                          .replace(" Special Batch (2026)", "")}
-                      </span>
-                    </div>
-
-                    {/* Highlight Badge */}
-                    {student.highlightText && (
-                      <div className="absolute top-3 right-3">
-                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#FFC928] text-[#071D43] text-[10px] font-extrabold uppercase tracking-wide shadow-md">
-                          <Star className="w-2.5 h-2.5 fill-current" />
-                          {student.highlightText}
-                        </span>
-                      </div>
-                    )}
-
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80" />
+                  {/* Batch Badge Overlay */}
+                  <div className="absolute top-3 left-3">
+                    <span
+                      className={`inline-block px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider shadow-md backdrop-blur-md ${
+                        is12th
+                          ? "bg-blue-600/90 text-white border border-blue-400/40"
+                          : student.batch === "sainik"
+                          ? "bg-red-600/90 text-white border border-red-400/40"
+                          : "bg-emerald-600/90 text-white border border-emerald-400/40"
+                      }`}
+                    >
+                      {student.batchLabel
+                        .replace(" Batch (2025–26)", "")
+                        .replace(" Batch", "")
+                        .replace(" Special Batch (2026)", "")}
+                    </span>
                   </div>
 
-                  {/* Details Card */}
-                  <div className="p-5 flex-1 flex flex-col justify-between space-y-4 bg-slate-800/90">
-                    <div>
-                      <div className="flex items-center justify-between gap-2">
-                        <h4 className="text-lg font-bold text-white group-hover:text-[#FFC928] transition-colors">
-                          {student.name}
-                        </h4>
-                        <CheckCircle2 className="w-4 h-4 text-[#FFC928] flex-shrink-0" />
-                      </div>
-                      <p className="text-xs text-slate-400 mt-0.5">
-                        {student.batchLabel}
-                      </p>
+                  {/* Highlight Badge */}
+                  {student.highlightText && (
+                    <div className="absolute top-3 right-3">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#FFC928] text-[#071D43] text-[10px] font-extrabold uppercase tracking-wide shadow-md">
+                        <Star className="w-2.5 h-2.5 fill-current" />
+                        {student.highlightText}
+                      </span>
                     </div>
+                  )}
 
-                    {/* Scores Section */}
-                    <div className="space-y-2 pt-2 border-t border-white/10">
-                      <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
-                        Subject Scores
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        {student.scores.map((sc, idx) => (
-                          <div
-                            key={idx}
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-semibold text-white shadow-sm"
-                          >
-                            <span className="text-slate-300 font-normal">{sc.subject}:</span>
-                            <span className="text-[#FFC928] font-bold">{sc.score}</span>
-                          </div>
-                        ))}
-                      </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80" />
+                </div>
+
+                {/* Details Card */}
+                <div className="p-5 flex-1 flex flex-col justify-between space-y-4 bg-slate-800/90">
+                  <div>
+                    <div className="flex items-center justify-between gap-2">
+                      <h4 className="text-lg font-bold text-white group-hover:text-[#FFC928] transition-colors">
+                        {student.name}
+                      </h4>
+                      <CheckCircle2 className="w-4 h-4 text-[#FFC928] flex-shrink-0" />
+                    </div>
+                    <p className="text-xs text-slate-400 mt-0.5">
+                      {student.batchLabel}
+                    </p>
+                  </div>
+
+                  {/* Scores Section */}
+                  <div className="space-y-2 pt-2 border-t border-white/10">
+                    <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
+                      Subject Scores
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {student.scores.map((sc, idx) => (
+                        <div
+                          key={idx}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-semibold text-white shadow-sm"
+                        >
+                          <span className="text-slate-300 font-normal">{sc.subject}:</span>
+                          <span className="text-[#FFC928] font-bold">{sc.score}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            );
+          })}
         </div>
 
         {/* Bottom Banner & Guarantee */}
