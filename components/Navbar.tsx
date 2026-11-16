@@ -29,6 +29,7 @@ export default function Navbar() {
     { name: "Home", href: "#home" },
     { name: "About Us", href: "#about" },
     { name: "Courses", href: "#courses" },
+    { name: "Prospectus & Results", href: "#prospectus" },
     { name: "Class 10 Toppers", href: "#toppers" },
     { name: "Campus Life", href: "#campus-life" },
     { name: "Why Choose Us", href: "#why-choose-us" },

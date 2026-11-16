@@ -6,6 +6,7 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Courses from "@/components/Courses";
 import Toppers from "@/components/Toppers";
+import Prospectus from "@/components/Prospectus";
 import Memories from "@/components/Memories";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import CampusLife from "@/components/CampusLife";
@@ -53,6 +54,9 @@ export default function Home() {
 
         {/* Class 10th (2024-25 Batch) Toppers Showcase */}
         <Toppers />
+
+        {/* Dedicated Prospectus & Achievements Section */}
+        <Prospectus />
 
         {/* Old Memories & Campus Moments */}
         <Memories />
