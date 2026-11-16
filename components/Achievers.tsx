@@ -35,7 +35,7 @@ interface Achiever {
 }
 
 export default function Achievers() {
-  const [activeFilter, setActiveFilter] = useState<"all" | "12th" | "10th" | "sainik">("all");
+  const [activeFilter, setActiveFilter] = useState<"all" | "12th" | "10th">("all");
   const [showPosterModal, setShowPosterModal] = useState(false);
 
   // Class 12th Batch (2025–26)
@@ -194,20 +194,7 @@ export default function Achievers() {
     },
   ];
 
-  // Sainik School Special Selection
-  const sainikAchiever: Achiever = {
-    id: "aryan-sainik",
-    name: "Aryan Mishra",
-    batch: "sainik",
-    batchLabel: "Sainik School Special Batch",
-    image: "/images/achievers/aryan-mishra.jpg",
-    scores: [{ subject: "Selection Status", score: "Selected (2026 Batch)" }],
-    featured: true,
-    highlightText: "Selected in Sainik School",
-  };
-
   const allAchievers: Achiever[] = [
-    sainikAchiever,
     ...class12thAchievers,
     ...class10thAchievers,
   ];
@@ -217,9 +204,7 @@ export default function Achievers() {
       ? allAchievers
       : activeFilter === "12th"
       ? class12thAchievers
-      : activeFilter === "10th"
-      ? class10thAchievers
-      : [sainikAchiever];
+      : class10thAchievers;
 
   return (
     <section
@@ -269,10 +254,9 @@ export default function Achievers() {
         {/* Filter Navigation Tabs */}
         <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12">
           {[
-            { key: "all", label: "All Achievers (14)", icon: Trophy },
+            { key: "all", label: "All Achievers (13)", icon: Trophy },
             { key: "12th", label: "Class 12th Batch (2025–26)", icon: GraduationCap },
             { key: "10th", label: "Class 10th Batch (2025–26)", icon: Award },
-            { key: "sainik", label: "Sainik School Selection", icon: Medal },
           ].map((tab) => {
             const Icon = tab.icon;
             const isActive = activeFilter === tab.key;
@@ -293,71 +277,9 @@ export default function Achievers() {
           })}
         </div>
 
-        {/* Special Spotlight for Sainik School Selection */}
-        {(activeFilter === "all" || activeFilter === "sainik") && (
-          <div className="mb-12">
-            <div className="bg-gradient-to-r from-amber-500/20 via-[#FFC928]/15 to-orange-500/20 rounded-3xl p-6 sm:p-8 border-2 border-[#FFC928]/50 shadow-2xl relative overflow-hidden backdrop-blur-md">
-              <div className="absolute -top-12 -right-12 w-48 h-48 bg-[#FFC928]/20 rounded-full blur-3xl pointer-events-none" />
-
-              <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-8 relative z-10">
-                <div className="relative w-36 h-44 sm:w-44 sm:h-52 rounded-2xl overflow-hidden border-2 border-[#FFC928] shadow-xl flex-shrink-0 bg-slate-800">
-                  <Image
-                    src="/images/achievers/aryan-mishra.jpg"
-                    alt="Aryan Mishra - Selected in Sainik School 2026 Batch"
-                    fill
-                    className="object-cover object-top hover:scale-105 transition-transform duration-500"
-                    sizes="180px"
-                  />
-                  <div className="absolute top-2 right-2 bg-gradient-to-r from-red-600 to-amber-600 text-white text-[10px] font-black uppercase px-2 py-0.5 rounded shadow">
-                    Selected
-                  </div>
-                </div>
-
-                <div className="flex-1 text-center md:text-left space-y-3">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-600/30 border border-red-500/40 text-amber-300 text-xs font-bold uppercase tracking-wider">
-                    <Medal className="w-3.5 h-3.5 text-[#FFC928]" />
-                    <span>Special Pride Selection • Sainik School Batch</span>
-                  </div>
-
-                  <h3 className="text-2xl sm:text-3xl font-black text-white">
-                    Aryan Mishra
-                  </h3>
-
-                  <p className="text-amber-200/90 text-sm sm:text-base font-medium">
-                    Proudly Selected in <strong className="text-white font-bold">Sainik School (2026 Batch)</strong> from Evolution Career Institute's Special Sainik School, RMS &amp; RIMS Preparation Batch.
-                  </p>
-
-                  <div className="pt-2 flex flex-wrap items-center justify-center md:justify-start gap-3">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 text-xs text-white border border-white/15">
-                      <ShieldCheck className="w-3.5 h-3.5 text-[#FFC928]" />
-                      Sainik School / RMS / RIMS Mentorship
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 text-xs text-white border border-white/15">
-                      <Star className="w-3.5 h-3.5 text-[#FFC928]" />
-                      2026 Final Selection
-                    </span>
-                  </div>
-                </div>
-
-                <div className="flex-shrink-0">
-                  <a
-                    href="#admissions"
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-[#FFC928] to-amber-500 text-[#071D43] font-bold text-sm shadow-lg hover:shadow-amber-500/30 hover:scale-105 active:scale-95 transition-all"
-                  >
-                    <span>Enquire for Sainik Batch</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
         {/* Achievers Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {displayedAchievers
-            .filter((a) => a.id !== "aryan-sainik" || activeFilter === "sainik")
-            .map((student) => {
+          {displayedAchievers.map((student) => {
               const is12th = student.batch === "12th";
               return (
                 <div
