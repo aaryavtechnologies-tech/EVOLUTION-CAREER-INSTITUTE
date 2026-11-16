@@ -117,18 +117,30 @@ export default function Achievers() {
   // Class 10th Batch (2025–26)
   const class10thAchievers: Achiever[] = [
     {
-      id: "aryan-10",
-      name: "Aryan Mishra",
+      id: "altamas-10",
+      name: "Mohd. Altamas",
       batch: "10th",
       batchLabel: "Class 10th Batch (2025–26)",
-      image: "/images/achievers/aryan-mishra.jpg",
+      image: "/images/achievers/mohd-altamas.jpg",
       scores: [
         { subject: "Science", score: "91%" },
         { subject: "English", score: "82%" },
-        { subject: "Sainik School", score: "Selected" },
       ],
       featured: true,
-      highlightText: "Science 91% & Sainik Selection",
+      highlightText: "Science 91% Topper",
+    },
+    {
+      id: "aryan-10",
+      name: "Aryan Mishra",
+      batch: "10th",
+      batchLabel: "Sainik School Special Batch (2026)",
+      image: "/images/achievers/aryan-mishra.jpg",
+      scores: [
+        { subject: "Sainik School", score: "Selected" },
+        { subject: "Batch", score: "2026" },
+      ],
+      featured: true,
+      highlightText: "Selected in Sainik School",
     },
     {
       id: "naved-10",
