@@ -70,19 +70,19 @@ export default function Prospectus() {
 
   const topperHighlights = [
     {
-      batch: "Class 12th (2025–26)",
+      batch: "Class 12th Achievers",
       students: [
-        { name: "Mahi Singh", score: "Chem 90% • Eng 86%" },
-        { name: "Safiya Qureshi", score: "Bio 92% • Chem 82%" },
-        { name: "Tuba Mariyam", score: "Bio 82% • Eng 88%" },
         { name: "Nandini", score: "Eng 88% • Chem 82%" },
         { name: "Ayan Qureshi", score: "Biology 82%" },
         { name: "Saqib Qureshi", score: "Chem 80% • Eng 77%" },
       ],
     },
     {
-      batch: "Class 10th (2025–26)",
+      batch: "Class 10th Board Achievers",
       students: [
+        { name: "Mahi Singh", score: "Maths 97% • Science 96%" },
+        { name: "Safiya Qureshi", score: "Science 91% • Maths 88%" },
+        { name: "Tuba Mariyam", score: "Science 93% • English 87%" },
         { name: "Mohd. Altamas", score: "Science 91% • Eng 82%" },
         { name: "Mohd. Naved", score: "English 87%" },
         { name: "Veer Singh", score: "Science 86% • SST 81%" },
@@ -93,11 +93,9 @@ export default function Prospectus() {
       ],
     },
     {
-      batch: "Class 10th (2024)",
+      batch: "Sainik School Special Batch",
       students: [
-        { name: "Mahi Singh", score: "Maths 97% • Science 96%" },
-        { name: "Safiya Qureshi", score: "Science 91% • Maths 88%" },
-        { name: "Tuba Mariyam", score: "Science 93% • English 87%" },
+        { name: "Aryan Mishra", score: "Selected • 2026 Batch" },
       ],
     },
   ];

@@ -35,50 +35,11 @@ interface Achiever {
 }
 
 export default function Achievers() {
-  const [activeFilter, setActiveFilter] = useState<"all" | "12th" | "10th" | "2024">("all");
+  const [activeFilter, setActiveFilter] = useState<"all" | "12th" | "10th">("all");
   const [showPosterModal, setShowPosterModal] = useState(false);
 
   // Class 12th Batch (2025–26)
   const class12thAchievers: Achiever[] = [
-    {
-      id: "mahi-12",
-      name: "Mahi Singh",
-      batch: "12th",
-      batchLabel: "Class 12th Batch (2025–26)",
-      image: "/images/achievers/mahi-singh.jpg",
-      scores: [
-        { subject: "Chemistry", score: "90%" },
-        { subject: "English", score: "86%" },
-      ],
-      featured: true,
-      highlightText: "Chemistry Topper",
-    },
-    {
-      id: "safiya-12",
-      name: "Safiya Qureshi",
-      batch: "12th",
-      batchLabel: "Class 12th Batch (2025–26)",
-      image: "/images/achievers/safiya-qureshi.jpg",
-      scores: [
-        { subject: "Biology", score: "92%" },
-        { subject: "Chemistry", score: "82%" },
-      ],
-      featured: true,
-      highlightText: "Biology Topper",
-    },
-    {
-      id: "tuba-12",
-      name: "Tuba Mariyam",
-      batch: "12th",
-      batchLabel: "Class 12th Batch (2025–26)",
-      image: "/images/achievers/tuba-mariyam.jpg",
-      scores: [
-        { subject: "English", score: "88%" },
-        { subject: "Biology", score: "82%" },
-        { subject: "Chemistry", score: "80%" },
-      ],
-      highlightText: "High Achiever",
-    },
     {
       id: "nandini-12",
       name: "Nandini",
@@ -89,6 +50,7 @@ export default function Achievers() {
         { subject: "English", score: "88%" },
         { subject: "Chemistry", score: "82%" },
       ],
+      featured: true,
       highlightText: "Consistent Performer",
     },
     {
@@ -98,6 +60,7 @@ export default function Achievers() {
       batchLabel: "Class 12th Batch (2025–26)",
       image: "/images/achievers/ayan-qureshi.jpg",
       scores: [{ subject: "Biology", score: "82%" }],
+      featured: true,
       highlightText: "Science Achiever",
     },
     {
@@ -114,8 +77,47 @@ export default function Achievers() {
     },
   ];
 
-  // Class 10th Batch (2025–26)
+  // Class 10th Batch Achievers
   const class10thAchievers: Achiever[] = [
+    {
+      id: "mahi-10",
+      name: "Mahi Singh",
+      batch: "10th",
+      batchLabel: "Class 10th Batch",
+      image: "/images/achievers/mahi-singh.jpg",
+      scores: [
+        { subject: "Maths", score: "97%" },
+        { subject: "Science", score: "96%" },
+      ],
+      featured: true,
+      highlightText: "Maths 97% • Science 96%",
+    },
+    {
+      id: "safiya-10",
+      name: "Safiya Qureshi",
+      batch: "10th",
+      batchLabel: "Class 10th Batch",
+      image: "/images/achievers/safiya-qureshi.jpg",
+      scores: [
+        { subject: "Science", score: "91%" },
+        { subject: "Maths", score: "88%" },
+      ],
+      featured: true,
+      highlightText: "Science 91% Topper",
+    },
+    {
+      id: "tuba-10",
+      name: "Tuba Mariyam",
+      batch: "10th",
+      batchLabel: "Class 10th Batch",
+      image: "/images/achievers/tuba-mariyam.jpg",
+      scores: [
+        { subject: "Science", score: "93%" },
+        { subject: "English", score: "87%" },
+      ],
+      featured: true,
+      highlightText: "Science 93% Topper",
+    },
     {
       id: "altamas-10",
       name: "Mohd. Altamas",
@@ -207,53 +209,9 @@ export default function Achievers() {
     },
   ];
 
-  // Class 10th Batch (2024)
-  const class10th2024Achievers: Achiever[] = [
-    {
-      id: "mahi-10-2024",
-      name: "Mahi Singh",
-      batch: "10th",
-      batchLabel: "Class 10th Batch (2024)",
-      image: "/images/achievers/mahi-singh-2024.jpg",
-      scores: [
-        { subject: "Maths", score: "97%" },
-        { subject: "Science", score: "96%" },
-      ],
-      featured: true,
-      highlightText: "Maths 97% & Science 96%",
-    },
-    {
-      id: "safiya-10-2024",
-      name: "Safiya Qureshi",
-      batch: "10th",
-      batchLabel: "Class 10th Batch (2024)",
-      image: "/images/achievers/safiya-qureshi-2024.jpg",
-      scores: [
-        { subject: "Science", score: "91%" },
-        { subject: "Maths", score: "88%" },
-      ],
-      featured: true,
-      highlightText: "Science 91% & Maths 88%",
-    },
-    {
-      id: "tuba-10-2024",
-      name: "Tuba Mariyam",
-      batch: "10th",
-      batchLabel: "Class 10th Batch (2024)",
-      image: "/images/achievers/tuba-mariyam-2024.jpg",
-      scores: [
-        { subject: "Science", score: "93%" },
-        { subject: "English", score: "87%" },
-      ],
-      featured: true,
-      highlightText: "Science 93% & English 87%",
-    },
-  ];
-
   const allAchievers: Achiever[] = [
     ...class12thAchievers,
     ...class10thAchievers,
-    ...class10th2024Achievers,
   ];
 
   const displayedAchievers =
@@ -261,9 +219,7 @@ export default function Achievers() {
       ? allAchievers
       : activeFilter === "12th"
       ? class12thAchievers
-      : activeFilter === "10th"
-      ? class10thAchievers
-      : class10th2024Achievers;
+      : class10thAchievers;
 
   return (
     <section
@@ -314,9 +270,8 @@ export default function Achievers() {
         <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12">
           {[
             { key: "all", label: `All Achievers (${allAchievers.length})`, icon: Trophy },
-            { key: "12th", label: "Class 12th Batch (2025–26)", icon: GraduationCap },
-            { key: "10th", label: "Class 10th Batch (2025–26)", icon: Award },
-            { key: "2024", label: "Class 10th Batch (2024)", icon: Star },
+            { key: "12th", label: `Class 12th (${class12thAchievers.length})`, icon: GraduationCap },
+            { key: "10th", label: `Class 10th & Sainik (${class10thAchievers.length})`, icon: Award },
           ].map((tab) => {
             const Icon = tab.icon;
             const isActive = activeFilter === tab.key;
@@ -364,16 +319,17 @@ export default function Achievers() {
                     <div className="absolute top-3 left-3">
                       <span
                         className={`inline-block px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider shadow-md backdrop-blur-md ${
-                          student.batchLabel.includes("2024")
-                            ? "bg-amber-600/90 text-white border border-amber-400/40"
-                            : is12th
+                          is12th
                             ? "bg-blue-600/90 text-white border border-blue-400/40"
                             : student.batch === "sainik"
                             ? "bg-red-600/90 text-white border border-red-400/40"
                             : "bg-emerald-600/90 text-white border border-emerald-400/40"
                         }`}
                       >
-                        {student.batchLabel.replace(" Batch (2025–26)", "").replace(" Batch (2024)", " (2024)")}
+                        {student.batchLabel
+                          .replace(" Batch (2025–26)", "")
+                          .replace(" Batch", "")
+                          .replace(" Special Batch (2026)", "")}
                       </span>
                     </div>
 
