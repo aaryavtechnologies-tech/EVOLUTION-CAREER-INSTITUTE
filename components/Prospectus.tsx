@@ -72,10 +72,10 @@ export default function Prospectus() {
     {
       batch: "Class 12th (2025–26)",
       students: [
-        { name: "Mahi Singh", score: "Chem 90% • Eng 85%" },
+        { name: "Mahi Singh", score: "Chem 90% • Eng 86%" },
         { name: "Safiya Qureshi", score: "Bio 92% • Chem 82%" },
-        { name: "Tuba Mariyam", score: "Bio 82% • Eng 86%" },
-        { name: "Nandini", score: "Eng 86% • Chem 82%" },
+        { name: "Tuba Mariyam", score: "Bio 82% • Eng 88%" },
+        { name: "Nandini", score: "Eng 88% • Chem 82%" },
         { name: "Ayan Qureshi", score: "Biology 82%" },
         { name: "Saqib Qureshi", score: "Chem 80% • Eng 77%" },
       ],
@@ -85,7 +85,7 @@ export default function Prospectus() {
       students: [
         { name: "Mohd. Altamas", score: "Science 91% • Eng 82%" },
         { name: "Mohd. Naved", score: "English 87%" },
-        { name: "Veer Singh", score: "Science 85% • SST 81%" },
+        { name: "Veer Singh", score: "Science 86% • SST 81%" },
         { name: "Onik", score: "Science 80% • SST 82%" },
         { name: "Sakshi Maurya", score: "English 80%" },
         { name: "Mohd. Arkan", score: "English 83% • SST 89%" },

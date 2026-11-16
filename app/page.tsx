@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Courses from "@/components/Courses";
-import Toppers from "@/components/Toppers";
+import Achievers from "@/components/Achievers";
 import Prospectus from "@/components/Prospectus";
 import Memories from "@/components/Memories";
 import WhyChooseUs from "@/components/WhyChooseUs";
@@ -52,8 +52,8 @@ export default function Home() {
         {/* SECTION 4: Our Courses & Programs */}
         <Courses onSelectCourse={handleSelectCourse} />
 
-        {/* Class 10th (2024-25 Batch) Toppers Showcase */}
-        <Toppers />
+        {/* Dedicated Achievers & Hall of Fame Section (Class 12th, 10th & Sainik School) */}
+        <Achievers />
 
         {/* Dedicated Prospectus & Achievements Section */}
         <Prospectus />
