@@ -14,7 +14,7 @@ export default function Courses({ onSelectCourse }: CoursesProps) {
       badge: "Foundation Program",
       badgeColor: "bg-blue-100 text-[#123C78]",
       title: "Class 9th & 10th",
-      subtitle: "Board Foundation",
+      subtitle: "Pre-Foundation for NEET | JEE | NDA",
       description:
         "Build strong academic fundamentals with structured learning and concept revision.",
       curriculum: [
