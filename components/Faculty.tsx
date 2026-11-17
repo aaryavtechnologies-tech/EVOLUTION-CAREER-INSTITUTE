@@ -157,6 +157,7 @@ export default function Faculty() {
       role: "Science Faculty",
       subjects: ["Science", "Physics & Chemistry Foundation"],
       department: "science",
+      qualification: "BCA",
       experience: "5+ Years Experience",
       highlight: "Foundation & Junior Science Specialist",
       keySpecialties: [
