@@ -11,7 +11,10 @@ import {
   Sparkles,
   User,
   ShieldCheck,
+  Database,
+  Lock,
 } from "lucide-react";
+import { saveEnquiry } from "@/lib/db";
 
 interface AdmissionEnquiryProps {
   initialCourse?: string;
@@ -123,6 +126,18 @@ export default function AdmissionEnquiry({
 
     // Generate unique confirmation ID
     const refCode = "ECI-" + Math.floor(100000 + Math.random() * 900000);
+
+    // Save to persistent institute database
+    saveEnquiry({
+      refCode,
+      studentName: formData.studentName.trim(),
+      parentName: formData.parentName.trim(),
+      mobileNumber: formData.mobileNumber.trim(),
+      selectedClass: formData.selectedClass,
+      selectedCourse: formData.selectedCourse,
+      message: formData.message.trim(),
+    });
+
     setSubmissionId(refCode);
     setSubmitted(true);
   };
@@ -294,6 +309,12 @@ export default function AdmissionEnquiry({
                       <span className="text-slate-500">Selected Course:</span>
                       <span className="font-semibold">{formData.selectedCourse}</span>
                     </div>
+                  </div>
+
+                  {/* Database Confirmation Badge */}
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold border border-emerald-200">
+                    <Database className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>Saved to Institute Database (Ref: {submissionId})</span>
                   </div>
 
                   {/* Immediate WhatsApp Connect Button */}
@@ -605,6 +626,21 @@ export default function AdmissionEnquiry({
                   <p className="text-[11px] text-center text-slate-400 pt-2">
                     🔒 Your information is confidential and used exclusively for academic counselling.
                   </p>
+
+                  <div className="text-center pt-1">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (typeof window !== "undefined") {
+                          window.dispatchEvent(new CustomEvent("open_admin_portal"));
+                        }
+                      }}
+                      className="text-[11px] text-slate-400 hover:text-slate-600 inline-flex items-center gap-1 underline underline-offset-2 transition-colors cursor-pointer"
+                    >
+                      <Lock className="w-3 h-3 text-slate-400" />
+                      <span>Institute Staff / Admin Portal</span>
+                    </button>
+                  </div>
                 </form>
               )}
             </div>

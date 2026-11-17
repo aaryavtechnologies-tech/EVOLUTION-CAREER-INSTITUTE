@@ -141,6 +141,20 @@ export default function Footer() {
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <p>© 2026 Evolution Career Institute. All Rights Reserved.</p>
 
+          {/* Admin Leads Database Portal */}
+          <button
+            type="button"
+            onClick={() => {
+              if (typeof window !== "undefined") {
+                window.dispatchEvent(new CustomEvent("open_admin_portal"));
+              }
+            }}
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 hover:bg-white/10 text-slate-300 hover:text-[#FFC928] border border-white/10 transition-colors text-xs font-semibold cursor-pointer"
+          >
+            <ShieldCheck className="w-3.5 h-3.5 text-[#FFC928]" />
+            <span>Admin Portal (Leads DB)</span>
+          </button>
+
           {/* MANDATORY EXACT DEVELOPMENT CREDIT */}
           <div className="text-slate-400 text-xs tracking-wide">
             Designed & Developed by{" "}

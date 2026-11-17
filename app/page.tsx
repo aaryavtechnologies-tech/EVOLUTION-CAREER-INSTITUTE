@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -17,10 +17,31 @@ import Reviews from "@/components/Reviews";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import FloatingContact from "@/components/FloatingContact";
+import AdminDashboard from "@/components/AdminDashboard";
 
 export default function Home() {
   const [selectedCourse, setSelectedCourse] = useState("NEET");
   const [selectedClass, setSelectedClass] = useState("11th");
+  const [isAdminOpen, setIsAdminOpen] = useState(false);
+
+  useEffect(() => {
+    const handleOpenAdmin = () => setIsAdminOpen(true);
+    window.addEventListener("open_admin_portal", handleOpenAdmin);
+
+    // Keyboard shortcut: Ctrl + Shift + A to toggle Admin Leads Portal
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === "A" || e.key === "a")) {
+        e.preventDefault();
+        setIsAdminOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("open_admin_portal", handleOpenAdmin);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   const handleSelectCourse = (courseName: string, className: string) => {
     setSelectedCourse(courseName);
@@ -91,6 +112,9 @@ export default function Home() {
 
       {/* Floating Call & WhatsApp Buttons */}
       <FloatingContact />
+
+      {/* Secure Admission Enquiries Admin Portal Modal */}
+      <AdminDashboard isOpen={isAdminOpen} onClose={() => setIsAdminOpen(false)} />
     </div>
   );
 }
