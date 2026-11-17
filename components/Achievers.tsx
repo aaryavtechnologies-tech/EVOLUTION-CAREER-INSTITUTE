@@ -163,7 +163,7 @@ export default function Achievers() {
         { subject: "Science", score: "86%" },
         { subject: "SST", score: "81%" },
       ],
-      highlightText: "Dual Subject Distinction",
+      highlightText: "Dual Distinction",
     },
     {
       id: "onik-10",
@@ -313,10 +313,10 @@ export default function Achievers() {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
 
-                  {/* Batch Badge Overlay */}
-                  <div className="absolute top-3 left-3">
+                  {/* Badges Overlay Header (Flex container ensures badges NEVER overlap) */}
+                  <div className="absolute top-2.5 inset-x-2.5 z-10 flex flex-wrap items-start justify-between gap-1.5 pointer-events-none">
                     <span
-                      className={`inline-block px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider shadow-md backdrop-blur-md ${
+                      className={`inline-block px-2.5 py-1 rounded-md text-[10.5px] font-bold uppercase tracking-wider shadow-md backdrop-blur-md ${
                         is12th
                           ? "bg-blue-600/90 text-white border border-blue-400/40"
                           : student.batch === "sainik"
@@ -329,17 +329,14 @@ export default function Achievers() {
                         .replace(" Batch", "")
                         .replace(" Special Batch (2026)", "")}
                     </span>
-                  </div>
 
-                  {/* Highlight Badge */}
-                  {student.highlightText && (
-                    <div className="absolute top-3 right-3">
-                      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#FFC928] text-[#071D43] text-[10px] font-extrabold uppercase tracking-wide shadow-md">
-                        <Star className="w-2.5 h-2.5 fill-current" />
-                        {student.highlightText}
+                    {student.highlightText && (
+                      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#FFC928] text-[#071D43] text-[9.5px] font-extrabold uppercase tracking-wide shadow-md ml-auto">
+                        <Star className="w-2.5 h-2.5 fill-current flex-shrink-0" />
+                        <span>{student.highlightText}</span>
                       </span>
-                    </div>
-                  )}
+                    )}
+                  </div>
 
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80" />
                 </div>
