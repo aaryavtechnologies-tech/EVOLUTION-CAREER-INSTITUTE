@@ -26,6 +26,7 @@ interface GalleryPhoto {
   category: Exclude<MediaCategory, "all">;
   categoryLabel: string;
   fit?: "cover" | "contain";
+  position?: string;
 }
 
 interface CampusVideo {
@@ -130,23 +131,25 @@ const GALLERY_PHOTOS: GalleryPhoto[] = [
   },
   {
     id: "photo-td-5",
-    src: "/media/teachers-day/teachers-day-gift-presentation-1.jpeg",
+    src: "/media/teachers-day/teachers-day-cake-celebration.jpeg",
     title: "Teacher's Day Gift & Cake Celebration",
     caption:
       "Presenting commemorative Teacher's Day gift hampers alongside the celebration cake at the institute.",
     category: "teachers-day",
     categoryLabel: "Teacher's Day",
     fit: "cover",
+    position: "object-center",
   },
   {
     id: "photo-td-6",
-    src: "/media/teachers-day/teachers-day-gift-presentation-2.jpeg",
-    title: "Honoring Educators With Gratitude",
+    src: "/media/teachers-day/teachers-day-felicitation-memento.jpeg",
+    title: "Honoring Educators & Achievers With Gratitude",
     caption:
-      "Mentors receiving custom Evolution Career Institute Teacher's Day mementos from students and guests.",
+      "Faculty mentors presenting custom Evolution Career Institute academic mementos and congratulations to student achievers.",
     category: "teachers-day",
     categoryLabel: "Teacher's Day",
     fit: "cover",
+    position: "object-center",
   },
   {
     id: "photo-id-1",
@@ -449,7 +452,7 @@ export default function CampusLife() {
                     className={`w-full h-full transition-transform duration-500 group-hover:scale-105 ${
                       photo.fit === "contain"
                         ? "object-contain rounded-lg"
-                        : "object-cover object-top"
+                        : `object-cover ${photo.position || "object-center"}`
                     }`}
                   />
                   <div className="absolute top-3 left-3">
