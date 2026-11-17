@@ -33,7 +33,11 @@ export default function CrashCourse({ onEnquireCrashCourse }: CrashCourseProps) 
   });
 
   const [mounted, setMounted] = useState(false);
-  const [showPosterModal, setShowPosterModal] = useState(false);
+  const [activePosterModal, setActivePosterModal] = useState<{
+    src: string;
+    title: string;
+    alt: string;
+  } | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -58,13 +62,13 @@ export default function CrashCourse({ onEnquireCrashCourse }: CrashCourseProps) 
   }, [targetTime]);
 
   useEffect(() => {
-    if (!showPosterModal) return;
+    if (!activePosterModal) return;
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setShowPosterModal(false);
+      if (e.key === "Escape") setActivePosterModal(null);
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [showPosterModal]);
+  }, [activePosterModal]);
 
   const feeTracks = [
     {
@@ -256,7 +260,13 @@ export default function CrashCourse({ onEnquireCrashCourse }: CrashCourseProps) 
                 <div className="absolute -inset-2 bg-gradient-to-tr from-[#FFC928]/35 via-[#D71920]/25 to-[#123C78]/35 rounded-3xl blur-lg opacity-75"></div>
                 <button
                   type="button"
-                  onClick={() => setShowPosterModal(true)}
+                  onClick={() =>
+                    setActivePosterModal({
+                      src: "/media/posters/crash-course-2026.jpeg",
+                      title: "Crash Course 2026 — Official Brochure",
+                      alt: "Evolution Career Institute Crash Course 2026 official poster starting 20th November",
+                    })
+                  }
                   aria-label="Zoom official Crash Course 2026 poster"
                   className="relative w-full rounded-2xl overflow-hidden border-2 border-[#FFC928]/60 shadow-2xl bg-white group cursor-pointer block"
                 >
@@ -273,13 +283,31 @@ export default function CrashCourse({ onEnquireCrashCourse }: CrashCourseProps) 
                 </button>
               </div>
 
-              <div className="rounded-2xl overflow-hidden shadow-2xl border-2 border-[#FFC928]/40 bg-[#071D43]">
-                <img
-                  src="/images/gallery/jee-prize-poster.jpg"
-                  alt="Evolution Career Institute JEE Mains and Advanced ₹51,000 Prize Poster"
-                  className="w-full h-auto block hover:scale-[1.02] transition-transform duration-500"
-                  loading="lazy"
-                />
+              <div className="relative">
+                <div className="absolute -inset-2 bg-gradient-to-tr from-[#D71920]/35 via-[#FFC928]/25 to-[#123C78]/35 rounded-3xl blur-lg opacity-75"></div>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setActivePosterModal({
+                      src: "/images/gallery/jee-prize-poster.jpg",
+                      title: "₹51,000 Grand Prize — Top Achievers Award Scheme",
+                      alt: "Evolution Career Institute ₹51,000 Grand Prize Poster for JEE, NEET, 12th & 10th Board Top Achievers",
+                    })
+                  }
+                  aria-label="Zoom ₹51,000 Grand Prize Poster"
+                  className="relative w-full rounded-2xl overflow-hidden border-2 border-[#FFC928]/40 shadow-2xl bg-[#071D43] group cursor-pointer block"
+                >
+                  <img
+                    src="/images/gallery/jee-prize-poster.jpg"
+                    alt="Evolution Career Institute ₹51,000 Grand Prize Poster for JEE, NEET, 12th & 10th Board Top Achievers"
+                    className="w-full h-auto block group-hover:scale-[1.02] transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div className="absolute bottom-2.5 right-2.5 inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#071D43]/90 text-[#FFC928] text-[11px] font-bold shadow-lg border border-white/20">
+                    <Maximize2 className="w-3 h-3" />
+                    <span>Zoom</span>
+                  </div>
+                </button>
               </div>
             </div>
           </div>
@@ -287,12 +315,12 @@ export default function CrashCourse({ onEnquireCrashCourse }: CrashCourseProps) 
       </div>
 
       {/* Poster Zoom Modal */}
-      {showPosterModal && (
+      {activePosterModal && (
         <div
           role="dialog"
           aria-modal="true"
-          aria-label="Crash Course 2026 Official Poster"
-          onClick={() => setShowPosterModal(false)}
+          aria-label={activePosterModal.title}
+          onClick={() => setActivePosterModal(null)}
           className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-sm flex items-center justify-center p-4"
         >
           <div
@@ -301,22 +329,22 @@ export default function CrashCourse({ onEnquireCrashCourse }: CrashCourseProps) 
           >
             <div className="flex items-center justify-between px-5 py-3 border-b border-white/10 text-white">
               <span className="text-sm font-bold text-[#FFC928]">
-                Crash Course 2026 — Official Brochure
+                {activePosterModal.title}
               </span>
               <button
                 type="button"
-                onClick={() => setShowPosterModal(false)}
+                onClick={() => setActivePosterModal(null)}
                 aria-label="Close poster preview"
-                className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10"
+                className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
             <div className="p-3 bg-black/40 flex justify-center">
               <img
-                src="/media/posters/crash-course-2026.jpeg"
-                alt="Evolution Career Institute Crash Course 2026 official poster"
-                className="max-h-[80vh] w-auto object-contain rounded-lg"
+                src={activePosterModal.src}
+                alt={activePosterModal.alt}
+                className="max-h-[80vh] w-auto object-contain rounded-lg shadow-lg"
               />
             </div>
           </div>
