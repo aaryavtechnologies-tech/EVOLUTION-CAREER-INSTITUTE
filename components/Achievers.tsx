@@ -80,6 +80,19 @@ export default function Achievers() {
   // Class 10th Batch Achievers
   const class10thAchievers: Achiever[] = [
     {
+      id: "aryan-10",
+      name: "Aryan Mishra",
+      batch: "sainik",
+      batchLabel: "Sainik School Special Batch (2026)",
+      image: "/images/achievers/aryan-mishra.jpg",
+      scores: [
+        { subject: "Sainik School", score: "Selected" },
+        { subject: "Batch", score: "2026" },
+      ],
+      featured: true,
+      highlightText: "Selected in Sainik School",
+    },
+    {
       id: "mahi-10",
       name: "Mahi Singh",
       batch: "10th",
@@ -130,19 +143,6 @@ export default function Achievers() {
       ],
       featured: true,
       highlightText: "Science 91% Topper",
-    },
-    {
-      id: "aryan-10",
-      name: "Aryan Mishra",
-      batch: "10th",
-      batchLabel: "Sainik School Special Batch (2026)",
-      image: "/images/achievers/aryan-mishra.jpg",
-      scores: [
-        { subject: "Sainik School", score: "Selected" },
-        { subject: "Batch", score: "2026" },
-      ],
-      featured: true,
-      highlightText: "Selected in Sainik School",
     },
     {
       id: "naved-10",
@@ -210,8 +210,9 @@ export default function Achievers() {
   ];
 
   const allAchievers: Achiever[] = [
+    ...class10thAchievers.filter((a) => a.id === "aryan-10"),
     ...class12thAchievers,
-    ...class10thAchievers,
+    ...class10thAchievers.filter((a) => a.id !== "aryan-10"),
   ];
 
   const displayedAchievers =
