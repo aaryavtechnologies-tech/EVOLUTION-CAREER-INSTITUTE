@@ -28,9 +28,9 @@ export default function Logo({
   };
 
   const careerInstituteClasses = {
-    sm: "text-[6.5px] sm:text-[7.5px] tracking-[0.14em]",
-    md: "text-[7.5px] md:text-[8.5px] tracking-[0.16em]",
-    lg: "text-[9px] md:text-[10px] tracking-[0.18em]",
+    sm: "text-[6.5px] sm:text-[7.5px] tracking-[0.44em] sm:tracking-[0.45em]",
+    md: "text-[7.5px] md:text-[8.5px] tracking-[0.45em] md:tracking-[0.46em]",
+    lg: "text-[9px] md:text-[10px] tracking-[0.42em] md:tracking-[0.45em]",
   };
 
   const subtitleClasses = {
@@ -68,7 +68,7 @@ export default function Logo({
           <span className="text-[#D71920] font-black text-base sm:text-xl leading-none">.</span>
         </div>
         <span
-          className={`font-semibold uppercase ${
+          className={`font-bold uppercase ${
             isLight ? "text-[#FFC928]" : "text-[#123C78]"
           } ${careerInstituteClasses[size]} mt-0.5`}
         >
