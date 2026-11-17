@@ -38,7 +38,7 @@ export default function Courses({ onSelectCourse }: CoursesProps) {
       badgeColor: "bg-amber-100 text-amber-900",
       featured: true,
       title: "Class 11th & 12th",
-      subtitle: "NEET | IIT-JEE | CUET",
+      subtitle: "NEET | IIT-JEE | CUET | NDA",
       description:
         "Focused academic preparation for board examinations and competitive entrance examinations.",
       curriculum: [
@@ -47,7 +47,7 @@ export default function Courses({ onSelectCourse }: CoursesProps) {
         "CUET entrance syllabus & test simulation",
         "Regular test series & comprehensive performance analysis",
       ],
-      examBadges: ["NEET", "IIT-JEE", "CUET", "Board Examinations"],
+      examBadges: ["NEET", "IIT-JEE", "CUET", "NDA", "Board Examinations"],
       icon: Target,
       iconBg: "bg-[#D71920]",
       accentBorder: "border-[#FFC928] ring-2 ring-[#FFC928]/30",
