@@ -263,16 +263,16 @@ export default function CrashCourse({ onEnquireCrashCourse }: CrashCourseProps) 
                   onClick={() =>
                     setActivePosterModal({
                       src: "/media/posters/crash-course-2026.jpeg",
-                      title: "Crash Course 2026 — Official Brochure",
-                      alt: "Evolution Career Institute Crash Course 2026 official poster starting 20th November",
+                      title: "Evolution Career Institute — Official Admissions & Batch Brochure",
+                      alt: "Evolution Career Institute official brochure featuring academic programs, admissions and top achievers",
                     })
                   }
-                  aria-label="Zoom official Crash Course 2026 poster"
+                  aria-label="Zoom official Evolution Career Institute admissions brochure"
                   className="relative w-full rounded-2xl overflow-hidden border-2 border-[#FFC928]/60 shadow-2xl bg-white group cursor-pointer block"
                 >
                   <img
                     src="/media/posters/crash-course-2026.jpeg"
-                    alt="Evolution Career Institute Crash Course 2026 official poster starting 20th November"
+                    alt="Evolution Career Institute official brochure featuring academic programs, admissions and top achievers"
                     className="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform duration-300"
                     loading="lazy"
                   />

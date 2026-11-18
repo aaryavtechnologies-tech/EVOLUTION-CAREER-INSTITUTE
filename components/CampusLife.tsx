@@ -82,11 +82,11 @@ const GALLERY_PHOTOS: GalleryPhoto[] = [
   {
     id: "photo-poster-1",
     src: "/media/posters/crash-course-2026.jpeg",
-    title: "Crash Course 2026 Official Batch Poster",
+    title: "Official Admissions & Academic Brochure",
     caption:
-      "Crash Course 2026 starting from 20th November for Class 10th (₹10,000), Class 12th (₹12,000), IIT-JEE (₹20,000), and NEET (₹20,000).",
+      "Official Evolution Career Institute brochure detailing Class 1st to 12th programs, NEET, IIT-JEE, CUET, NDA, Sainik School batches, and top achievers.",
     category: "awards",
-    categoryLabel: "Official Announcement",
+    categoryLabel: "Official Brochure",
     fit: "contain",
   },
   {
