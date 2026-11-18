@@ -28,9 +28,9 @@ export default function Logo({
   };
 
   const careerInstituteClasses = {
-    sm: "text-[6.5px] sm:text-[7.5px]",
-    md: "text-[7.5px] md:text-[8.5px]",
-    lg: "text-[9.5px] md:text-[11px]",
+    sm: "text-[7.5px] sm:text-[8.5px] tracking-[0.15em]",
+    md: "text-[8.5px] md:text-[9.5px] tracking-[0.16em]",
+    lg: "text-[10.5px] md:text-[12px] tracking-[0.18em]",
   };
 
   const subtitleClasses = {
@@ -56,36 +56,28 @@ export default function Logo({
 
       {/* Typography */}
       <div className="flex flex-col leading-none whitespace-nowrap">
-        <div className="flex items-center">
-          <div className="flex flex-col w-fit">
-            <span
-              className={`${titleClasses[size]} uppercase tracking-wider ${
-                isLight ? "text-white" : "text-[#071D43]"
-              }`}
-              style={{ fontFamily: "'Outfit', sans-serif" }}
-            >
-              Evolution
-            </span>
-            <div
-              className={`font-bold uppercase flex justify-between w-full select-none ${
-                isLight ? "text-[#FFC928]" : "text-[#123C78]"
-              } ${careerInstituteClasses[size]} mt-0.5`}
-              aria-label="Career Institute"
-            >
-              <span className="sr-only">Career Institute</span>
-              <span aria-hidden="true" className="flex justify-between w-full">
-                {"CAREER INSTITUTE".split("").map((char, i) => (
-                  <span key={i} className={char === " " ? "w-[0.35em] inline-block" : "inline-block"}>
-                    {char === " " ? "\u00A0" : char}
-                  </span>
-                ))}
-              </span>
-            </div>
-          </div>
-          <span className="text-[#D71920] font-black text-base sm:text-xl leading-none ml-1 sm:ml-1.5 self-start sm:self-auto">
+        <div className="flex items-baseline">
+          <span
+            className={`${titleClasses[size]} uppercase tracking-wider ${
+              isLight ? "text-white" : "text-[#071D43]"
+            }`}
+            style={{ fontFamily: "'Outfit', sans-serif" }}
+          >
+            Evolution
+          </span>
+          <span className="text-[#D71920] font-black text-base sm:text-xl leading-none ml-1">
             .
           </span>
         </div>
+
+        <span
+          className={`font-bold uppercase ${
+            isLight ? "text-[#FFC928]" : "text-[#123C78]"
+          } ${careerInstituteClasses[size]} mt-0.5`}
+        >
+          Career Institute
+        </span>
+
         {showTagline && (
           <span
             className={`font-semibold ${subtitleClasses[size]} mt-1 flex items-center gap-1 ${
