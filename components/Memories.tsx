@@ -54,11 +54,11 @@ export default function Memories() {
     },
     {
       id: 8,
-      src: "/images/memories/memory-8.jpg",
+      src: "/images/memories/topper-award-presentation.jpg",
       title: "Topper Award Presentation",
       caption: "Honouring student achievement alongside parents and faculty.",
       tag: "Felicitation",
-      imgPosition: "object-top",
+      imgPosition: "object-center",
     },
     {
       id: 3,
