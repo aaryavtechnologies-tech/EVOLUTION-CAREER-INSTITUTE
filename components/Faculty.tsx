@@ -17,6 +17,7 @@ import {
   ArrowRight,
   UserCheck,
   Landmark,
+  Globe,
 } from "lucide-react";
 
 interface Teacher {
@@ -24,7 +25,7 @@ interface Teacher {
   name: string;
   role: string;
   subjects: string[];
-  department: "physics" | "chemistry" | "mathematics" | "biology" | "science" | "commerce";
+  department: "physics" | "chemistry" | "mathematics" | "biology" | "science" | "commerce" | "english" | "sst";
   qualification?: string;
   experience?: string;
   highlight: string;
@@ -219,6 +220,48 @@ export default function Faculty() {
         iconColor: "text-amber-800",
       },
     },
+    {
+      id: "versha-sahay-english",
+      name: "Mrs. Versha Sahay",
+      role: "English Faculty",
+      subjects: ["English", "Grammar & Comprehension", "Literature"],
+      department: "english",
+      highlight: "English Language & Literature Mentor",
+      keySpecialties: [
+        "Class 9th to 12th Board Syllabus & Grammar Mastery",
+        "Creative Writing, Answer Presentation & Vocabulary",
+        "Communication Skills & Literature Critical Analysis",
+      ],
+      accentColor: {
+        bg: "bg-sky-50/80",
+        border: "border-sky-200",
+        badge: "bg-sky-600",
+        badgeText: "text-white",
+        iconBg: "bg-sky-100",
+        iconColor: "text-sky-700",
+      },
+    },
+    {
+      id: "om-yadav-sst",
+      name: "Mr. Om Yadav",
+      role: "SST (Social Science) Faculty",
+      subjects: ["Social Studies (SST)", "History", "Civics & Geography"],
+      department: "sst",
+      highlight: "Foundation & Boards SST Specialist",
+      keySpecialties: [
+        "NCERT Concept Mastery in History, Civics & Geography",
+        "Map Work, Timeline Retention & Scoring Strategies",
+        "Sainik School, RMS & Board Exam Preparation",
+      ],
+      accentColor: {
+        bg: "bg-orange-50/80",
+        border: "border-orange-200",
+        badge: "bg-orange-600",
+        badgeText: "text-white",
+        iconBg: "bg-orange-100",
+        iconColor: "text-orange-700",
+      },
+    },
   ];
 
   const filteredTeachers =
@@ -263,6 +306,8 @@ export default function Faculty() {
             { key: "biology", label: "Biology (NEET)", icon: Dna },
             { key: "commerce", label: "Commerce", icon: Landmark },
             { key: "science", label: "Science Foundation", icon: Microscope },
+            { key: "english", label: "English", icon: BookOpen },
+            { key: "sst", label: "SST", icon: Globe },
           ].map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.key;
@@ -302,7 +347,7 @@ export default function Faculty() {
                     <div
                       className={`w-14 h-14 rounded-2xl ${iconBg} ${iconColor} flex items-center justify-center font-black text-xl shadow-inner border border-white/60 flex-shrink-0 group-hover:scale-105 transition-transform`}
                     >
-                      {teacher.name.replace("Er. ", "").replace("Mr. ", "").charAt(0)}
+                      {teacher.name.replace(/^(Er\.|Mr\.|Mrs\.|Ms\.|Dr\.)\s*/i, "").charAt(0)}
                     </div>
 
                     <div className="flex flex-col items-end gap-1.5">
