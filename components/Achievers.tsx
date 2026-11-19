@@ -41,6 +41,45 @@ export default function Achievers() {
   // Class 12th Batch (2025–26)
   const class12thAchievers: Achiever[] = [
     {
+      id: "mahi-12",
+      name: "Mahi Singh",
+      batch: "12th",
+      batchLabel: "Class 12th Batch (2025–26)",
+      image: "/images/achievers/mahi-singh.jpg",
+      scores: [
+        { subject: "Chemistry", score: "90%" },
+        { subject: "English", score: "86%" },
+      ],
+      featured: true,
+      highlightText: "Chemistry 90% Topper",
+    },
+    {
+      id: "safiya-12",
+      name: "Safiya Qureshi",
+      batch: "12th",
+      batchLabel: "Class 12th Batch (2025–26)",
+      image: "/images/achievers/safiya-qureshi.jpg",
+      scores: [
+        { subject: "Biology", score: "92%" },
+        { subject: "Chemistry", score: "82%" },
+      ],
+      featured: true,
+      highlightText: "Biology 92% Topper",
+    },
+    {
+      id: "tuba-12",
+      name: "Tuba Mariyam",
+      batch: "12th",
+      batchLabel: "Class 12th Batch (2025–26)",
+      image: "/images/achievers/tuba-mariyam.jpg",
+      scores: [
+        { subject: "Biology", score: "82%" },
+        { subject: "Chemistry", score: "80%" },
+      ],
+      featured: true,
+      highlightText: "Biology & Chemistry Star",
+    },
+    {
       id: "nandini-12",
       name: "Nandini",
       batch: "12th",
@@ -91,45 +130,6 @@ export default function Achievers() {
       ],
       featured: true,
       highlightText: "Selected in Sainik School",
-    },
-    {
-      id: "mahi-10",
-      name: "Mahi Singh",
-      batch: "10th",
-      batchLabel: "Class 10th Batch",
-      image: "/images/achievers/mahi-singh.jpg",
-      scores: [
-        { subject: "Maths", score: "97%" },
-        { subject: "Science", score: "96%" },
-      ],
-      featured: true,
-      highlightText: "Maths 97% • Science 96%",
-    },
-    {
-      id: "safiya-10",
-      name: "Safiya Qureshi",
-      batch: "10th",
-      batchLabel: "Class 10th Batch",
-      image: "/images/achievers/safiya-qureshi.jpg",
-      scores: [
-        { subject: "Science", score: "91%" },
-        { subject: "Maths", score: "88%" },
-      ],
-      featured: true,
-      highlightText: "Science 91% Topper",
-    },
-    {
-      id: "tuba-10",
-      name: "Tuba Mariyam",
-      batch: "10th",
-      batchLabel: "Class 10th Batch",
-      image: "/images/achievers/tuba-mariyam.jpg",
-      scores: [
-        { subject: "Science", score: "93%" },
-        { subject: "English", score: "87%" },
-      ],
-      featured: true,
-      highlightText: "Science 93% Topper",
     },
     {
       id: "altamas-10",
@@ -206,6 +206,45 @@ export default function Achievers() {
       image: "/images/achievers/ankita-pandey.jpg",
       scores: [{ subject: "Overall Aggregate", score: "80%" }],
       highlightText: "Consistent Top Scorer",
+    },
+    {
+      id: "mahi-10",
+      name: "Mahi Singh",
+      batch: "10th",
+      batchLabel: "Class 10th Batch (2024)",
+      image: "/images/achievers/mahi-singh.jpg",
+      scores: [
+        { subject: "Maths", score: "97%" },
+        { subject: "Science", score: "96%" },
+      ],
+      featured: true,
+      highlightText: "Maths 97% • Science 96%",
+    },
+    {
+      id: "safiya-10",
+      name: "Safiya Qureshi",
+      batch: "10th",
+      batchLabel: "Class 10th Batch (2024)",
+      image: "/images/achievers/safiya-qureshi.jpg",
+      scores: [
+        { subject: "Science", score: "91%" },
+        { subject: "Maths", score: "88%" },
+      ],
+      featured: true,
+      highlightText: "Science 91% Topper",
+    },
+    {
+      id: "tuba-10",
+      name: "Tuba Mariyam",
+      batch: "10th",
+      batchLabel: "Class 10th Batch (2024)",
+      image: "/images/achievers/tuba-mariyam.jpg",
+      scores: [
+        { subject: "Science", score: "93%" },
+        { subject: "English", score: "87%" },
+      ],
+      featured: true,
+      highlightText: "Science 93% Topper",
     },
   ];
 
@@ -327,6 +366,7 @@ export default function Achievers() {
                     >
                       {student.batchLabel
                         .replace(" Batch (2025–26)", "")
+                        .replace(" Batch (2024)", "")
                         .replace(" Batch", "")
                         .replace(" Special Batch (2026)", "")}
                     </span>
