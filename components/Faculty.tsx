@@ -68,6 +68,49 @@ export default function Faculty() {
       },
     },
     {
+      id: "versha-sahay-english",
+      name: "Mrs. Versha Sahay",
+      role: "English Faculty",
+      subjects: ["English", "Grammar & Comprehension", "Literature"],
+      department: "english",
+      highlight: "English Language & Literature Mentor",
+      keySpecialties: [
+        "Class 9th to 12th Board Syllabus & Grammar Mastery",
+        "Creative Writing, Answer Presentation & Vocabulary",
+        "Communication Skills & Literature Critical Analysis",
+      ],
+      accentColor: {
+        bg: "bg-sky-50/80",
+        border: "border-sky-200",
+        badge: "bg-sky-600",
+        badgeText: "text-white",
+        iconBg: "bg-sky-100",
+        iconColor: "text-sky-700",
+      },
+    },
+    {
+      id: "narayan-sharma",
+      name: "Mr. Narayan Sharma",
+      role: "Commerce Faculty",
+      subjects: ["Commerce", "Accountancy", "Economics"],
+      department: "commerce",
+      qualification: "CA Intermediate Qualified",
+      highlight: "Accountancy & Commerce Expert",
+      keySpecialties: [
+        "Financial Accounting & Double Entry Concepts",
+        "Class 11th & 12th Commerce Board Preparation",
+        "Professional Foundation for CA, CS & CUET",
+      ],
+      accentColor: {
+        bg: "bg-purple-50/80",
+        border: "border-purple-200",
+        badge: "bg-purple-600",
+        badgeText: "text-white",
+        iconBg: "bg-purple-100",
+        iconColor: "text-purple-700",
+      },
+    },
+    {
       id: "abdul-khair",
       name: "Abdul Khair",
       role: "Biology Faculty (NEET Expert)",
@@ -176,28 +219,6 @@ export default function Faculty() {
       },
     },
     {
-      id: "narayan-sharma",
-      name: "Mr. Narayan Sharma",
-      role: "Commerce Faculty",
-      subjects: ["Commerce", "Accountancy", "Economics"],
-      department: "commerce",
-      qualification: "CA Intermediate Qualified",
-      highlight: "Accountancy & Commerce Expert",
-      keySpecialties: [
-        "Financial Accounting & Double Entry Concepts",
-        "Class 11th & 12th Commerce Board Preparation",
-        "Professional Foundation for CA, CS & CUET",
-      ],
-      accentColor: {
-        bg: "bg-purple-50/80",
-        border: "border-purple-200",
-        badge: "bg-purple-600",
-        badgeText: "text-white",
-        iconBg: "bg-purple-100",
-        iconColor: "text-purple-700",
-      },
-    },
-    {
       id: "s-shah-chemistry",
       name: "Er. S. Shah",
       role: "Chemistry Faculty",
@@ -218,27 +239,6 @@ export default function Faculty() {
         badgeText: "text-white",
         iconBg: "bg-amber-100",
         iconColor: "text-amber-800",
-      },
-    },
-    {
-      id: "versha-sahay-english",
-      name: "Mrs. Versha Sahay",
-      role: "English Faculty",
-      subjects: ["English", "Grammar & Comprehension", "Literature"],
-      department: "english",
-      highlight: "English Language & Literature Mentor",
-      keySpecialties: [
-        "Class 9th to 12th Board Syllabus & Grammar Mastery",
-        "Creative Writing, Answer Presentation & Vocabulary",
-        "Communication Skills & Literature Critical Analysis",
-      ],
-      accentColor: {
-        bg: "bg-sky-50/80",
-        border: "border-sky-200",
-        badge: "bg-sky-600",
-        badgeText: "text-white",
-        iconBg: "bg-sky-100",
-        iconColor: "text-sky-700",
       },
     },
     {
@@ -431,7 +431,7 @@ export default function Faculty() {
               Experience Our Faculty's Teaching Methodology First-Hand
             </h3>
             <p className="text-sm text-slate-300 max-w-2xl">
-              Attend complimentary demo sessions with Er. S. Shah, Er. Waris Khan, Abdul Khair, and our expert team before enrolling in any regular batch.
+              Attend complimentary demo sessions with Er. S. Shah, Mrs. Versha Sahay, Mr. Narayan Sharma, and our expert team before enrolling in any regular batch.
             </p>
           </div>
 
