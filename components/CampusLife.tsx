@@ -341,6 +341,7 @@ export default function CampusLife() {
                 <div className="relative aspect-video bg-[#04122C]">
                   <video
                     controls
+                    muted
                     playsInline
                     preload="metadata"
                     poster={video.poster}
@@ -591,6 +592,7 @@ export default function CampusLife() {
               <video
                 controls
                 autoPlay
+                muted
                 playsInline
                 poster={activeVideoModal.poster}
                 className="w-full max-h-[72vh] object-contain"
