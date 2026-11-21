@@ -38,7 +38,7 @@ export default function Achievers() {
   const [activeFilter, setActiveFilter] = useState<"all" | "12th" | "10th">("all");
   const [showPosterModal, setShowPosterModal] = useState(false);
 
-  // Class 12th Batch (2025–26) - Featured Star Achievers
+  // Class 12th Batch (2025–26)
   const class12thAchievers: Achiever[] = [
     {
       id: "mahi-12",
@@ -49,11 +49,9 @@ export default function Achievers() {
       scores: [
         { subject: "Chemistry", score: "90%" },
         { subject: "English", score: "86%" },
-        { subject: "10th Maths", score: "97%" },
-        { subject: "10th Science", score: "96%" },
       ],
       featured: true,
-      highlightText: "Class 12th & 10th Topper • Maths 97%",
+      highlightText: "Chemistry 90% Topper",
     },
     {
       id: "safiya-12",
@@ -64,11 +62,9 @@ export default function Achievers() {
       scores: [
         { subject: "Biology", score: "92%" },
         { subject: "Chemistry", score: "82%" },
-        { subject: "10th Science", score: "91%" },
-        { subject: "10th Maths", score: "88%" },
       ],
       featured: true,
-      highlightText: "Class 12th & 10th Topper • Biology 92%",
+      highlightText: "Biology 92% Topper",
     },
     {
       id: "tuba-12",
@@ -79,11 +75,9 @@ export default function Achievers() {
       scores: [
         { subject: "Biology", score: "82%" },
         { subject: "Chemistry", score: "80%" },
-        { subject: "10th Science", score: "93%" },
-        { subject: "10th English", score: "87%" },
       ],
       featured: true,
-      highlightText: "Class 12th & 10th Topper • Science 93%",
+      highlightText: "Biology & Chemistry Star",
     },
     {
       id: "nandini-12",
