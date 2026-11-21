@@ -14,6 +14,7 @@ import {
   Maximize2,
   PlayCircle,
   Megaphone,
+  Volume2,
 } from "lucide-react";
 
 type MediaCategory = "all" | "teachers-day" | "independence-day" | "campus" | "awards";
@@ -36,6 +37,7 @@ interface CampusVideo {
   title: string;
   description: string;
   tag: string;
+  hasAudio?: boolean;
 }
 
 const CAMPUS_VIDEOS: CampusVideo[] = [
@@ -59,12 +61,13 @@ const CAMPUS_VIDEOS: CampusVideo[] = [
   },
   {
     id: "vid-3",
-    src: "/media/videos/campus-classroom-tour.mp4",
-    poster: "/media/campus/classroom-whiteboard-view.jpeg",
-    title: "Sadar Cantt Classroom & Independence Day Tour",
+    src: "/media/videos/campus-tour-walkthrough.mp4",
+    poster: "/media/campus/campus-tour-poster.jpg",
+    title: "Sadar Cantt Campus Walkthrough & Director's Cabin",
     description:
-      "Walkthrough of our Sadar Cantt, Lucknow classrooms decorated in tricolor flags and balloons ahead of Independence Day celebrations.",
+      "Full walkthrough of our Sadar Cantt, Lucknow campus featuring Director Er. S. Shah's counseling office, student classrooms decorated for Independence Day, and academic infrastructure.",
     tag: "Campus Tour",
+    hasAudio: true,
   },
 ];
 
@@ -341,7 +344,7 @@ export default function CampusLife() {
                 <div className="relative aspect-video bg-[#04122C]">
                   <video
                     controls
-                    muted
+                    muted={!video.hasAudio}
                     playsInline
                     preload="metadata"
                     poster={video.poster}
@@ -350,6 +353,12 @@ export default function CampusLife() {
                     <source src={video.src} type="video/mp4" />
                     Your browser does not support video playback.
                   </video>
+                  {video.hasAudio && (
+                    <span className="absolute top-3 left-3 inline-flex items-center gap-1 text-[10px] font-bold text-emerald-950 bg-emerald-400/90 backdrop-blur-sm px-2.5 py-1 rounded-full shadow-md pointer-events-none">
+                      <Volume2 className="w-3.5 h-3.5 text-emerald-950" />
+                      With Audio
+                    </span>
+                  )}
                   <button
                     type="button"
                     onClick={() => setActiveVideoModal(video)}
@@ -592,7 +601,7 @@ export default function CampusLife() {
               <video
                 controls
                 autoPlay
-                muted
+                muted={!activeVideoModal.hasAudio}
                 playsInline
                 poster={activeVideoModal.poster}
                 className="w-full max-h-[72vh] object-contain"
