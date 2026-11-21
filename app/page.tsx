@@ -3,13 +3,13 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import VideoShowcase from "@/components/VideoShowcase";
 import About from "@/components/About";
 import Faculty from "@/components/Faculty";
 import Courses from "@/components/Courses";
 import Achievers from "@/components/Achievers";
 import Memories from "@/components/Memories";
 import WhyChooseUs from "@/components/WhyChooseUs";
+import CampusTourVideo from "@/components/CampusTourVideo";
 import CampusLife from "@/components/CampusLife";
 import CrashCourse from "@/components/CrashCourse";
 import TestSeries from "@/components/TestSeries";
@@ -68,9 +68,6 @@ export default function Home() {
         {/* SECTION 2: Hero Section */}
         <Hero />
 
-        {/* Video Highlights & Campus Walkthrough Tour (Featured on Home Page) */}
-        <VideoShowcase />
-
         {/* SECTION 3: About the Institute */}
         <About />
 
@@ -88,6 +85,9 @@ export default function Home() {
 
         {/* SECTION 5: Why Choose Us? */}
         <WhyChooseUs />
+
+        {/* Dedicated Campus Tour & Infrastructure Walkthrough (With Original Audio) */}
+        <CampusTourVideo />
 
         {/* SECTION 6: Campus Life, Videos, Celebrations & Awards */}
         <CampusLife />

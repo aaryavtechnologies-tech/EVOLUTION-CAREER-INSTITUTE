@@ -33,6 +33,7 @@ export default function Navbar() {
     { name: "Courses", href: "#courses" },
     { name: "Hall of Fame & Achievers", href: "#toppers" },
     { name: "Campus Life", href: "#campus-life" },
+    { name: "Campus Video Tour", href: "#campus-tour" },
     { name: "Why Choose Us", href: "#why-choose-us" },
     { name: "Crash Course 2026", href: "#crash-course" },
     { name: "Test Series 2.0", href: "#test-series" },

@@ -11,6 +11,7 @@ export default function Footer() {
     { name: "Hall of Fame & Achievers", href: "#toppers" },
     { name: "Why Choose Us", href: "#why-choose-us" },
     { name: "Campus Life & Gallery", href: "#campus-life" },
+    { name: "Campus Video Walkthrough", href: "#campus-tour" },
     { name: "Crash Course 2026", href: "#crash-course" },
     { name: "Test Series 2.0", href: "#test-series" },
     { name: "Admissions", href: "#admissions" },
