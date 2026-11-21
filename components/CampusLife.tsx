@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import {
   Camera,
-  Film,
   Award,
   Users,
   Flag,
@@ -12,9 +11,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Maximize2,
-  PlayCircle,
   Megaphone,
-  Volume2,
 } from "lucide-react";
 
 type MediaCategory = "all" | "teachers-day" | "independence-day" | "campus" | "awards";
@@ -29,47 +26,6 @@ interface GalleryPhoto {
   fit?: "cover" | "contain";
   position?: string;
 }
-
-interface CampusVideo {
-  id: string;
-  src: string;
-  poster: string;
-  title: string;
-  description: string;
-  tag: string;
-  hasAudio?: boolean;
-}
-
-const CAMPUS_VIDEOS: CampusVideo[] = [
-  {
-    id: "vid-1",
-    src: "/media/videos/teachers-day-student-performance.mp4",
-    poster: "/media/teachers-day/faculty-mentors-panel.jpeg",
-    title: "Teacher's Day Celebration & Student Tribute",
-    description:
-      "A heartwarming classroom moment as a student performs a musical tribute in front of faculty mentors and classmates, cheered on with warm encouragement and applause.",
-    tag: "Teacher's Day",
-  },
-  {
-    id: "vid-2",
-    src: "/media/videos/teachers-day-classroom-gathering.mp4",
-    poster: "/media/teachers-day/students-batch-group.jpeg",
-    title: "Batch Gathering & Mentor Appreciation",
-    description:
-      "Full classroom view of Evolution Career Institute students in institute ID lanyards gathered with mentors under the Teacher's Day banner.",
-    tag: "Student Community",
-  },
-  {
-    id: "vid-3",
-    src: "/media/videos/campus-tour-walkthrough.mp4",
-    poster: "/media/campus/campus-tour-poster.jpg",
-    title: "Sadar Cantt Campus Walkthrough & Director's Cabin",
-    description:
-      "Full walkthrough of our Sadar Cantt, Lucknow campus featuring Director Er. S. Shah's counseling office, student classrooms decorated for Independence Day, and academic infrastructure.",
-    tag: "Campus Tour",
-    hasAudio: true,
-  },
-];
 
 const GALLERY_PHOTOS: GalleryPhoto[] = [
   {
@@ -219,7 +175,6 @@ const GALLERY_PHOTOS: GalleryPhoto[] = [
 export default function CampusLife() {
   const [activeCategory, setActiveCategory] = useState<MediaCategory>("all");
   const [lightboxPhotoIndex, setLightboxPhotoIndex] = useState<number | null>(null);
-  const [activeVideoModal, setActiveVideoModal] = useState<CampusVideo | null>(null);
 
   const filteredPhotos =
     activeCategory === "all"
@@ -277,7 +232,6 @@ export default function CampusLife() {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setLightboxPhotoIndex(null);
-        setActiveVideoModal(null);
       }
       if (lightboxPhotoIndex !== null) {
         if (e.key === "ArrowRight") handleNextPhoto();
@@ -311,81 +265,6 @@ export default function CampusLife() {
             Glimpses from our classrooms in Sadar Cantt, Lucknow—celebrating mentorship,
             student milestones, national occasions, and academic honours.
           </p>
-        </div>
-
-        {/* Video Showcase */}
-        <div className="mb-16">
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-            <div className="flex items-center gap-2.5">
-              <div className="p-2 rounded-xl bg-[#071D43] text-[#FFC928]">
-                <Film className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="text-xl sm:text-2xl font-black text-[#071D43]">
-                  Video Highlights &amp; Classroom Tour
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-500">
-                  Watch real classroom celebrations and campus walkthroughs
-                </p>
-              </div>
-            </div>
-            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#123C78] bg-white px-3 py-1.5 rounded-full border border-slate-200 shadow-sm">
-              <PlayCircle className="w-4 h-4 text-[#D71920]" />
-              {CAMPUS_VIDEOS.length} Campus Videos
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {CAMPUS_VIDEOS.map((video) => (
-              <div
-                key={video.id}
-                className="rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col"
-              >
-                <div className="relative aspect-video bg-[#04122C]">
-                  <video
-                    controls
-                    muted={!video.hasAudio}
-                    playsInline
-                    preload="metadata"
-                    poster={video.poster}
-                    className="w-full h-full object-contain"
-                  >
-                    <source src={video.src} type="video/mp4" />
-                    Your browser does not support video playback.
-                  </video>
-                  {video.hasAudio && (
-                    <span className="absolute top-3 left-3 inline-flex items-center gap-1 text-[10px] font-bold text-emerald-950 bg-emerald-400/90 backdrop-blur-sm px-2.5 py-1 rounded-full shadow-md pointer-events-none">
-                      <Volume2 className="w-3.5 h-3.5 text-emerald-950" />
-                      With Audio
-                    </span>
-                  )}
-                  <button
-                    type="button"
-                    onClick={() => setActiveVideoModal(video)}
-                    aria-label={`Expand ${video.title}`}
-                    className="absolute top-3 right-3 p-1.5 rounded-lg bg-[#071D43]/80 hover:bg-[#071D43] text-white border border-white/20 backdrop-blur-sm transition-colors"
-                    title="Watch in theater view"
-                  >
-                    <Maximize2 className="w-4 h-4 text-[#FFC928]" />
-                  </button>
-                </div>
-
-                <div className="p-5 flex-1 flex flex-col justify-between">
-                  <div>
-                    <span className="inline-block text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-100 text-[#071D43] mb-2">
-                      {video.tag}
-                    </span>
-                    <h4 className="text-base font-bold text-[#071D43] mb-1.5">
-                      {video.title}
-                    </h4>
-                    <p className="text-xs text-slate-600 leading-relaxed">
-                      {video.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* Photo, Awards & Announcements Gallery */}
@@ -560,58 +439,6 @@ export default function CampusLife() {
               <span className="text-xs font-mono text-[#FFC928] flex-shrink-0">
                 {lightboxPhotoIndex + 1} / {filteredPhotos.length}
               </span>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Video Theater Modal */}
-      {activeVideoModal && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label={activeVideoModal.title}
-          onClick={() => setActiveVideoModal(null)}
-          className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-sm flex items-center justify-center p-4"
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="relative max-w-4xl w-full bg-[#071D43] rounded-2xl border border-white/20 shadow-2xl overflow-hidden"
-          >
-            <div className="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-white/10 text-white">
-              <div className="flex items-center gap-2.5 min-w-0">
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#FFC928] text-[#071D43] flex-shrink-0">
-                  {activeVideoModal.tag}
-                </span>
-                <h4 className="text-sm sm:text-base font-bold truncate">
-                  {activeVideoModal.title}
-                </h4>
-              </div>
-              <button
-                type="button"
-                onClick={() => setActiveVideoModal(null)}
-                aria-label="Close video theater"
-                className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            <div className="bg-black flex items-center justify-center max-h-[75vh]">
-              <video
-                controls
-                autoPlay
-                muted={!activeVideoModal.hasAudio}
-                playsInline
-                poster={activeVideoModal.poster}
-                className="w-full max-h-[72vh] object-contain"
-              >
-                <source src={activeVideoModal.src} type="video/mp4" />
-              </video>
-            </div>
-
-            <div className="px-4 sm:px-6 py-3.5 bg-[#04122C] text-slate-200 text-xs sm:text-sm">
-              {activeVideoModal.description}
             </div>
           </div>
         </div>

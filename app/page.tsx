@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import VideoShowcase from "@/components/VideoShowcase";
 import About from "@/components/About";
 import Faculty from "@/components/Faculty";
 import Courses from "@/components/Courses";
@@ -66,6 +67,9 @@ export default function Home() {
       <main className="flex-1">
         {/* SECTION 2: Hero Section */}
         <Hero />
+
+        {/* Video Highlights & Campus Walkthrough Tour (Featured on Home Page) */}
+        <VideoShowcase />
 
         {/* SECTION 3: About the Institute */}
         <About />
